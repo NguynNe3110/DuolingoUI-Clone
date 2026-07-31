@@ -1,0 +1,83 @@
+name: duolingo_ui_clone
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # ---------------- State Management ----------------
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+
+  # BLoC State Management
+  flutter_bloc: ^8.1.6
+  bloc: ^8.1.4
+  equatable: ^2.0.5
+
+  # ---------------- Network ----------------
+  dio: ^5.9.0
+  retrofit: 4.7.2
+  json_annotation: ^4.9.0
+
+  # ---------------- Database ----------------
+  drift: ^2.22.0
+  sqlite3_flutter_libs: ^0.5.28
+  path_provider: ^2.1.5
+  path: ^1.9.0
+
+  # ---------------- Navigation ----------------
+  go_router: ^17.3.0
+
+  # ---------------- DI ----------------
+  get_it: ^8.0.3
+
+  # ---------------- Utils ----------------
+  intl: ^0.20.0
+  http: ^1.2.2
+
+  # ---------------- Freezed ----------------
+  # 🔥 Hạ xuống 2.4.4 để đồng bộ với freezed 2.5.7 (tránh lỗi cú pháp của bản 3.0)
+  freezed_annotation: ^2.4.4
+
+  flutter_dotenv: ^6.0.0
+
+#  fluttertoast: ^8.2.12
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+  # Code Generation
+  build_runner: ^2.4.13
+
+  riverpod_generator: ^2.6.3
+
+  drift_dev: ^2.22.0
+
+  # 🔥 QUAN TRỌNG: Hạ xuống 9.x để dùng build ^2.0.0, tương thích retrofit 4.x
+  retrofit_generator: ^9.0.0
+
+  json_serializable: ^6.8.0
+
+  # 🔥 Hạ xuống 2.5.7 (Bản 3.0.0 có breaking change rất dễ lỗi code cũ)
+  freezed: ^2.5.7
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/project_forecast_weather/
+    - .env
