@@ -52,7 +52,7 @@ dependencies:
   flutter_dotenv: ^6.0.0
 
 #  fluttertoast: ^8.2.12
-
+  flutter_svg: ^2.2.0
 
 dev_dependencies:
   flutter_test:
