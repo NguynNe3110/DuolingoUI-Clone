@@ -13,10 +13,11 @@ class AfterSplashScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       backgroundColor: AppColors.background,
       body: Padding(
-        padding: EdgeInsets.all(AppSpacing.lg),
-        child: Expanded(
+
+        padding: EdgeInsets.all(AppSpacing.S16),
             child: Column(
 
               children: [
@@ -30,10 +31,10 @@ class AfterSplashScreen extends StatelessWidget{
                           AppImages.duo_after_splash,
                           width: 100,
                         ),
-                        SizedBox(height: AppSpacing.lg,),
+                        SizedBox(height: AppSpacing.S16,),
 
                         SvgPicture.asset(AppIcon.logoTextGreen, width: 120,),
-                        SizedBox(height: AppSpacing.sm  ,),
+                        SizedBox(height: AppSpacing.S8  ,),
 
                         Text('Học miễn phí. Suốt đời',
                           style: AppTextTheme.light.titleSmall,
@@ -50,7 +51,7 @@ class AfterSplashScreen extends StatelessWidget{
                       textColor: AppColors.background,
                     ),
 
-                    SizedBox(height: AppSpacing.lg,),
+                    SizedBox(height: AppSpacing.S16,),
 
                     AppButton(
                       label: 'TÔI ĐÃ CÓ TÀI KHOẢN',
@@ -64,7 +65,6 @@ class AfterSplashScreen extends StatelessWidget{
                 )
               ],
             )
-        ),
       ),
     );
   }

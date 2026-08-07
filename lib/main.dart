@@ -49,7 +49,10 @@ class MyApp extends StatelessWidget {
       ),
 
       // routerConfig: appRouter, // nhúng route vào build
-      routerConfig: MockappRouter,
+      // routerConfig: MockappRouter,
+      routerConfig: MockScreenRouter,
+      // routerConfig: UiCheatRouter, //
+
 
       // home: HomeScreen(),// cấu hình theo navigator 1.0 bản cũ,
       // bản mới 2.0 là đăng kí màn hình ở file config vd appRoute()
