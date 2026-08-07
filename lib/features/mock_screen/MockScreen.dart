@@ -39,7 +39,7 @@ class MockData extends StatelessWidget {
 
               children: [
                 // gồm 1 vài text và button
-                Mock1(),
+                // Mock1(),
                 AppButton(
                   iconPath: AppIcon.home,
                   label: 'XEM NHIỆM VỤ NGAY',
@@ -47,6 +47,35 @@ class MockData extends StatelessWidget {
                   onPressed: () => {},
 
                 ),
+
+
+                SizedBox(height: 12,),
+
+
+                Container(
+                  height: 45,
+                  width: 45,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFBBECFD),
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: const Color(0xFF8EDFFF),
+                      width: 2,
+                    ),
+                  ),
+                  child: SvgPicture.asset(
+                    AppIcon.home,
+                    width: 24,
+                    height: 24,
+                  ),
+                ),
+
+                Container(
+                  child: Image.asset('assets/images/duolingo.png',
+                  width: 400,),
+
+                )
+
               ],
             ),
           ),
