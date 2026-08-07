@@ -7,6 +7,8 @@ class CallScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Center(
+      child: const Text('call Screen') ,
+    );
   }
 }

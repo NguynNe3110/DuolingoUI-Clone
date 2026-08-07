@@ -7,6 +7,8 @@ class CommunityScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Center(
+      child: const Text('comminity Screen') ,
+    );
   }
 }
