@@ -29,8 +29,12 @@ class AppIcon {
   static const trophyGold = 'assets/icons/icon_trophy_gold_mainshell.svg';
   static const volumeOff = 'assets/icons/icon_volume_off.svg';
   static const volumeOn = 'assets/icons/icon_volume_on.svg';
-  static const logoTextGreen = 'assets/icons/logo_text_green.svg';
-  static const logoTextWhite = 'assets/icons/logo_text_while.svg';
+  static const logoTextGreen = 'assets/icons/logo_text_while.svg';
+  static const logoTextWhite = 'assets/icons/logo_text_green.svg';
   static const imgSuper = 'assets/icons/img_super.svg';
   static const imgSuperGradiend = 'assets/icons/img_super_gradient.svg';
+
+  static const phone = 'assets/icons/icon_phone.svg';
+  static const facebook = 'assets/icons/icon_facebook.svg';
+  static const google = 'assets/icons/icon_google.svg';
 }
