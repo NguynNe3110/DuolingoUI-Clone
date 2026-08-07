@@ -7,44 +7,39 @@ import '../theme/app_colors.dart';
 
 class AppButton extends StatefulWidget {
   final String label;
-  final String? iconPath; // icon
+  final String? iconPath;
 
-  // final Color? color;
-  // final Color? depthColor;
-  // final Color? textColor;
-  final ButtonVariant variant; // kieu
-  final bool isEnabled; // trạng thái
+  // 1. Mở khóa các biến custom color
+  final Color? backgroundColor;
+  final Color? depthColor;
+  final Color? textColor;
+
+  final ButtonVariant variant;
+  final bool isEnabled;
 
   final TextStyle? textStyle;
-
-
   final Color? borderColor;
-  //final double độ dày viền
   final double? height;
   final double? width;
 
+  final double? depth;
   final VoidCallback? onPressed;
 
   const AppButton({
     super.key,
-    required this.label, //
+    required this.label,
     this.iconPath,
-
-    // this.color, //
-    // this.depthColor, //
-    // this.textColor,
+    this.backgroundColor, // Custom nền
+    this.depthColor,      // Custom độ sâu (shadow)
+    this.textColor,       // Custom chữ
     this.variant = ButtonVariant.primary,
     this.isEnabled = true,
-    // this.isState = 'enable',
-
     this.borderColor,
-
     this.textStyle,
-
-
     this.height,
     this.width,
-    this.onPressed
+    this.depth,
+    this.onPressed,
   });
 
   @override
@@ -52,23 +47,22 @@ class AppButton extends StatefulWidget {
 }
 
 class _AppButtonState extends State<AppButton> {
-  static const double _depth = 3.5;
+  // static const double _depth =  3.5;
   bool _pressed = false;
-  Timer? _releaseTimer; // ← Thêm biến này
+  Timer? _releaseTimer;
 
   @override
   void dispose() {
-    _releaseTimer?.cancel(); // ← Cleanup khi widget bị hủy
+    _releaseTimer?.cancel();
     super.dispose();
   }
 
   void _handleTapDown(TapDownDetails details) {
-    _releaseTimer?.cancel(); // Hủy timer cũ (nếu có)
-    setState(() => _pressed = true); // Set ngay lập tức
+    _releaseTimer?.cancel();
+    setState(() => _pressed = true);
   }
 
   void _handleTapUp(TapUpDetails details) {
-    // Delay 100ms trước khi thả - đảm bảo mắt thấy hiệu ứng
     _releaseTimer = Timer(const Duration(milliseconds: 80), () {
       if (mounted) setState(() => _pressed = false);
     });
@@ -80,11 +74,28 @@ class _AppButtonState extends State<AppButton> {
     setState(() => _pressed = false);
   }
 
+  double _calculateAutoDepth(Color depthColor) {
+    if (depthColor == AppColors.grayBorder200 ||
+        depthColor == Colors.transparent) {
+      return 1.9;
+    }
+
+    return 3.5;
+  }
   @override
   Widget build(BuildContext context) {
-    final palette = ButtonPalette.resolve(widget.variant, widget.isEnabled);
+    // 2. Lấy bảng màu gốc từ Variant
+    final basePalette = ButtonPalette.resolve(widget.variant, widget.isEnabled);
     final canTap = widget.isEnabled && widget.onPressed != null;
     final textTheme = Theme.of(context).textTheme;
+
+    // 3. CƠ CHẾ OVERRIDE: Custom Color ?? Variant Color
+    final finalBgColor = widget.backgroundColor ?? basePalette.backgroundColor;
+    final finalDepthColor = widget.depthColor ?? basePalette.depthColor;
+    final finalTextColor = widget.textColor ?? basePalette.textColor;
+    final finalBorderColor = widget.borderColor ?? basePalette.borderColor;
+
+    final finalDepth = widget.depth ?? _calculateAutoDepth(finalDepthColor);
 
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
@@ -100,21 +111,21 @@ class _AppButtonState extends State<AppButton> {
         alignment: Alignment.center,
         transform: Matrix4.translationValues(
           0,
-          (_pressed && canTap) ? _depth : 0,
+          (_pressed && canTap) ? finalDepth : 0,
           0,
         ),
         decoration: BoxDecoration(
-          color: palette.backgroundColor,
-          borderRadius: BorderRadius.circular(AppRadius.md),
-          border: palette.borderColor != null
-              ? Border.all(color: palette.borderColor!, width: 1.5)
+          color: finalBgColor, // Dùng màu đã override
+          borderRadius: BorderRadius.circular(AppRadius.r14), //14
+          border: finalBorderColor != null
+              ? Border.all(color: finalBorderColor, width: 1.8)
               : null,
-          boxShadow: palette.depthColor == Colors.transparent
+          boxShadow: finalDepthColor == Colors.transparent
               ? null
               : [
             BoxShadow(
-              color: palette.depthColor,
-              offset: Offset(0, (_pressed && canTap) ? 0 : _depth),
+              color: finalDepthColor, // Dùng màu đã override
+              offset: Offset(0, (_pressed && canTap) ? 0 : finalDepth),
               blurRadius: 0,
             ),
           ],
@@ -123,13 +134,19 @@ class _AppButtonState extends State<AppButton> {
           mainAxisSize: MainAxisSize.min,
           children: [
             if (widget.iconPath != null) ...[
-              SvgPicture.asset(widget.iconPath!, width: 20, height: 20),
+              // Nếu có custom textColor thì tint luôn icon cho đồng bộ (optional)
+              SvgPicture.asset(
+                widget.iconPath!,
+                width: 20,
+                height: 20,
+                // colorFilter: ColorFilter.mode(finalTextColor, BlendMode.srcIn),
+              ),
               const SizedBox(width: 8),
             ],
             Text(
               widget.label,
               style: widget.textStyle ??
-                  textTheme.labelMedium?.copyWith(color: palette.textColor),
+                  textTheme.labelMedium?.copyWith(color: finalTextColor), // Dùng màu đã override
             ),
           ],
         ),
@@ -185,9 +202,9 @@ class ButtonPalette {
       case ButtonVariant.neutral:
         return ButtonPalette(
           backgroundColor: enabled ? AppColors.background    : AppColors.background.withOpacity(0.5),
-          depthColor:      enabled ? AppColors.disabledText : const Color(0xFFBDBDBD).withOpacity(0.4),
+          depthColor:      enabled ? AppColors.grayBorder200 : const Color(0xFFBDBDBD).withOpacity(0.4),
           textColor:       enabled ? AppColors.borderDark    : Colors.black38,
-          borderColor:     enabled ? AppColors.disabledText : null,
+          borderColor:     enabled ? AppColors.grayBorder200 : null,
         );
 
       case ButtonVariant.ghost:
