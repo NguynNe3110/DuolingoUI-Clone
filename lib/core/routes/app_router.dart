@@ -6,12 +6,25 @@ import 'package:duolingo_ui_clone/features/main/profile/profile_screen.dart';
 import 'package:duolingo_ui_clone/features/main/pronounce/pronounce_screen.dart';
 import 'package:duolingo_ui_clone/features/main/tournament/tournament_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:path/path.dart';
 
 import '../../features/mock_screen/MockScreen.dart';
 import '../../features/main/home/screens/home_screen.dart';
 import '../../features/main/main_shell.dart';
+import '../../features/mock_screen/bubble_demo.dart';
+import '../../features/mock_screen/quiz_screen.dart';
+import '../../features/mock_screen/ui_cheat_sheet_app.dart';
 import '../../features/splash/splash_screen.dart';
+import '../../features/start/first/after_splash_screen.dart';
+import '../../features/start/first/login_screen.dart';
 
+final GoRouter MockScreenRouter = GoRouter(
+  debugLogDiagnostics: true, // in ra log path cua gorouter
+  initialLocation: '/',
+  routes: [
+    GoRoute(path: '/', builder: (context, state) => BubbleDemo()),
+  ],
+);
 
 // final GoRouter appRouter = GoRouter(
 //   debugLogDiagnostics: true, // in ra log path cua gorouter
@@ -36,15 +49,24 @@ final _missionRoute = GoRoute(path: '/mission', name: 'mission', builder: (_, _)
 final _tournamentRoute = GoRoute(path: '/tournament', name: 'tournament', builder: (_, _) => const TournamentScreen());
 final _communityRoute = GoRoute(path: '/community', name: 'community', builder: (_, _) => const CommunityScreen());
 final _profileRoute = GoRoute(path: '/profile', name: 'profile', builder: (_, _) => const ProfileScreen());
-final _pronounceRoute = GoRoute(path: '/pronounce', name: 'pronounce', builder: (_, _) => const PronounceScreen());
-final _callRoute = GoRoute(path: '/call', name: 'call', builder: (_, _) => const CallScreen());
-final _practicesRoute = GoRoute(path: '/practices', name: 'practices', builder: (_, _) => const PracticesScreen());
 
+final _moreRoute = GoRoute(
+  path: '/more',
+  redirect: (context, state) =>
+  state.uri.path == '/more' ? '/more/pronounce' : null,
+  // 👆 chỉ redirect khi đích đến ĐÚNG LÀ '/more',
+  //    còn '/more/call', '/more/practices' thì đi thẳng vào route con
+  routes: [
+    GoRoute(path: 'pronounce', name: 'pronounce', builder: (_, _) => const PronounceScreen()),
+    GoRoute(path: 'call', name: 'call', builder: (_, _) => const CallScreen()),
+    GoRoute(path: 'practices', name: 'practices', builder: (_, _) => const PracticesScreen()),
+  ],
+);
 final GoRouter appRouter = GoRouter(
   debugLogDiagnostics: true, // in ra log path cua gorouter
   initialLocation: '/',
   routes: [
-    GoRoute(path: '/', builder: (context, state) => HomeScreen()), // phai doi thanh splash
+    GoRoute(path: '/', builder: (context, state) => SplashScreen()), // phai doi thanh splash
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainShell(navigationShell: navigationShell);
@@ -55,20 +77,40 @@ final GoRouter appRouter = GoRouter(
         StatefulShellBranch(routes: [_tournamentRoute]),
         StatefulShellBranch(routes: [_communityRoute]),
         StatefulShellBranch(routes: [_profileRoute]),
-        StatefulShellBranch(routes: [_pronounceRoute]),
-        StatefulShellBranch(routes: [_callRoute]),
-        StatefulShellBranch(routes: [_practicesRoute])
+        StatefulShellBranch(routes: [_moreRoute]),
       ],
     ),
   ],
 );
 
 
-final GoRouter MockappRouter = GoRouter(
+final GoRouter MockComponentRouter = GoRouter(
   debugLogDiagnostics: true, // in ra log path cua gorouter
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, state) => Mockscreen()),
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return MainShell(navigationShell: navigationShell);
+      },
+      branches: [
+        StatefulShellBranch(routes: [_homeRoute]),
+        StatefulShellBranch(routes: [_missionRoute]),
+        StatefulShellBranch(routes: [_tournamentRoute]),
+        StatefulShellBranch(routes: [_communityRoute]),
+        StatefulShellBranch(routes: [_profileRoute]),
+      ],
+    ),
 
   ],
 );
+
+
+final GoRouter UiCheatRouter = GoRouter(
+  debugLogDiagnostics: true, // in ra log path cua gorouter
+  initialLocation: '/',
+  routes: [
+    GoRoute(path: '/', builder: (context, state) => UiCheatSheetApp()),
+  ],
+);
+

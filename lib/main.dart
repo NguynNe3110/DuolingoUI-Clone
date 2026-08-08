@@ -49,8 +49,8 @@ class MyApp extends StatelessWidget {
       ),
 
       // routerConfig: appRouter, // nhúng route vào build
-      // routerConfig: MockappRouter,
-      routerConfig: MockScreenRouter,
+      routerConfig: MockComponentRouter, // viết vào file mockScreen thì ở đây
+      // routerConfig: MockScreenRouter, // chỉ danh cho xây dựng cả màn hình
       // routerConfig: UiCheatRouter, //
 
 

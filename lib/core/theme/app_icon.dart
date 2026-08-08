@@ -37,4 +37,8 @@ class AppIcon {
   static const phone = 'assets/icons/icon_phone.svg';
   static const facebook = 'assets/icons/icon_facebook.svg';
   static const google = 'assets/icons/icon_google.svg';
+
+  static const closeCircle = 'assets/icons/icon_close-circle.svg';
+
+
 }
