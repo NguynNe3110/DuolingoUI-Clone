@@ -33,27 +33,28 @@ class AppInputField extends StatefulWidget {
 class _AppInputField extends State<AppInputField> {
   final FocusNode _focusNode = FocusNode();
 
+  void _onFocusChange() => setState(() {});
+  void _onTextChanged() => setState(() {});
+
   @override
   void initState() {
     super.initState();
 
-    _focusNode.addListener(() {
-      setState(() {});
-    });
-
-    widget.controller?.addListener(() {
-      setState(() {});
-    });
+    _focusNode.addListener(_onFocusChange);
+    widget.controller?.addListener(_onTextChanged);
   }
 
   @override
   void dispose() {
+    _focusNode.removeListener(_onFocusChange);
     _focusNode.dispose();
+
+    widget.controller.removeListener(_onTextChanged);
     super.dispose();
   }
 
   bool get _showIcon {
-    return _focusNode.hasFocus && widget.controller!.text.isNotEmpty;
+    return _focusNode.hasFocus && widget.controller.text.isNotEmpty;
   }
 
 
@@ -73,7 +74,18 @@ class _AppInputField extends State<AppInputField> {
               vertical: AppSpacing.S12
           ),
           // suffix: _showIcon ? SvgPicture.asset(AppIcon.closeCircle) : null , // sufix nhận vào widget, k tối ưu với icon
-          suffixIcon: _showIcon ? SvgPicture.asset(AppIcon.closeCircle) : null ,
+          suffixIcon: _showIcon ? IconButton(
+            onPressed: () {
+              widget.controller.clear(); // Xóa text
+              // Controller clear sẽ tự trigger listener -> setState -> _showIcon = false
+            },
+            icon: SvgPicture.asset(
+              AppIcon.closeCircle,
+              width: 24,
+              height: 24,
+              // colorFilter: const ColorFilter.mode(AppColors.disabledText, BlendMode.srcIn), // nếu cần đổi màu SVG
+            ),
+          ) : null ,
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
                 color: AppColors.grayBorder200,
