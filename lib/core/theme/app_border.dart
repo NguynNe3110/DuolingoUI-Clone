@@ -5,16 +5,16 @@ import 'app_colors.dart';
 class AppBorder {
   AppBorder._();
 
-  static const double thin = 1.0;
-  static const double medium = 2.0; // Viền tiêu chuẩn của Duolingo
-  static const double thick = 3.0;
+  static const double b1 = 1.0;
+  static const double b2 = 2.0; // Viền tiêu chuẩn của Duolingo
+  static const double b3 = 3.0;
 
   /// Viền đen tiêu chuẩn của Duolingo
   static Border standard() {
-    return Border.all(color: AppColors.borderDark, width: medium);
+    return Border.all(color: AppColors.borderDark, width: b2);
   }
 
   static BorderSide standardSide() {
-    return const BorderSide(color: AppColors.borderDark, width: medium);
+    return const BorderSide(color: AppColors.borderDark, width: b2);
   }
 }

@@ -63,7 +63,7 @@ class _AppButtonState extends State<AppButton> {
   }
 
   void _handleTapUp(TapUpDetails details) {
-    _releaseTimer = Timer(const Duration(milliseconds: 80), () {
+    _releaseTimer = Timer(const Duration(milliseconds: 40), () {
       if (mounted) setState(() => _pressed = false);
     });
     widget.onPressed?.call();
@@ -104,7 +104,7 @@ class _AppButtonState extends State<AppButton> {
       onTapCancel: canTap ? _handleTapCancel : null,
 
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 10),
+        duration: const Duration(milliseconds: 30),
         curve: Curves.easeOut,
         height: widget.height ?? 44,
         width: widget.width,
@@ -118,7 +118,7 @@ class _AppButtonState extends State<AppButton> {
           color: finalBgColor, // Dùng màu đã override
           borderRadius: BorderRadius.circular(AppRadius.r14), //14
           border: finalBorderColor != null
-              ? Border.all(color: finalBorderColor, width: 1.8)
+              ? Border.all(color: finalBorderColor, width: 2)
               : null,
           boxShadow: finalDepthColor == Colors.transparent
               ? null
