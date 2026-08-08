@@ -1,0 +1,95 @@
+
+
+
+import 'package:duolingo_ui_clone/core/exports/app_export_theme.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+import '../theme/app_border.dart';
+import '../theme/app_colors.dart';
+
+class AppInputField extends StatefulWidget {
+
+  final Color borderColor;
+  final double borderValue;
+  final String? hint;
+  final TextEditingController controller;
+
+  const AppInputField({
+    super.key,
+    this.borderColor = AppColors.duoBlue,
+    this.borderValue = AppBorder.b2,
+    this.hint,
+    required this.controller,
+  });
+
+  @override
+  State<AppInputField> createState() {
+    return _AppInputField();
+  }
+}
+
+class _AppInputField extends State<AppInputField> {
+  final FocusNode _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+
+    _focusNode.addListener(() {
+      setState(() {});
+    });
+
+    widget.controller?.addListener(() {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    super.dispose();
+  }
+
+  bool get _showIcon {
+    return _focusNode.hasFocus && widget.controller!.text.isNotEmpty;
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+
+    return TextField(
+      controller: widget.controller,
+      style: TextStyle(color: AppColors.textPrimary, fontSize: 16),// style chữ người nhập
+      focusNode: _focusNode,
+      decoration: InputDecoration(
+          hintText: widget.hint ?? "",
+          hintStyle: TextStyle(color: AppColors.disabledText, fontSize: 16),
+          border: InputBorder.none, // loai bo vien mac dinh cua input
+          contentPadding: EdgeInsets.symmetric( //
+              horizontal: AppSpacing.S16,
+              vertical: AppSpacing.S12
+          ),
+          // suffix: _showIcon ? SvgPicture.asset(AppIcon.closeCircle) : null , // sufix nhận vào widget, k tối ưu với icon
+          suffixIcon: _showIcon ? SvgPicture.asset(AppIcon.closeCircle) : null ,
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: AppColors.grayBorder200,
+                width: widget.borderValue
+            ),
+            borderRadius: BorderRadius.circular(AppRadius.r14),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: widget.borderColor,
+                width: widget.borderValue
+            ),
+            borderRadius: BorderRadius.circular(AppRadius.r14),
+          )
+      ),
+    );
+
+  }
+}
