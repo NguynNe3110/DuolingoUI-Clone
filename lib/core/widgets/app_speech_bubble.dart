@@ -1,6 +1,11 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
+import '../theme/app_border.dart';
+import '../theme/app_colors.dart';
+import '../theme/app_radius.dart';
+import '../theme/app_spacing.dart';
+
 /// Hướng của đuôi bong bóng
 enum BubbleTail { none, down, up, left, right }
 
@@ -14,13 +19,13 @@ class AppSpeechBubble extends StatelessWidget {
     /// Khoảng cách từ mép đầu (trái với down/up, trên với left/right)
     /// tới chân trái của đuôi. null => đuôi tự căn giữa.
     this.tailOffset,
-    this.fillColor = Colors.white,
-    this.borderColor = const Color(0xFFE5E5E5),
-    this.borderWidth = 2,
-    this.radius = 12,
+    this.fillColor = AppColors.background,
+    this.borderColor = AppColors.grayBorder200,
+    this.borderWidth = AppBorder.b2,
+    this.radius = AppRadius.r16,
     this.tailWidth = 16,
     this.tailHeight = 10,
-    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+    this.padding = const EdgeInsets.symmetric(horizontal: AppSpacing.S16, vertical: AppSpacing.S12),
   });
 
   final Widget child;
