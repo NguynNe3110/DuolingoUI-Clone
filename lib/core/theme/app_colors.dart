@@ -16,17 +16,20 @@ class AppColors {
   static const Color duoBlueDark = Color(0xFF009bdb);
   static const Color duoYellow = Color(0xFFffc500);
   static const Color duoYellowDark = Color(0xFFf3a300);
+  static const Color duoYellowSecondary = Color(0xFFffc800);
   static const Color duoRed = Color(0xFFff4b4b);
   static const Color duoRedDark = Color(0xFFea2b2b);
   static const Color duoPurple = Color(0xFFCE82FF);
   static const Color duoPurpleDark = Color(0xFFA855F7);
+  static const Color duoOrange = Color(0xFFff8f00);
+  static const Color duoOrangeDark = Color(0xffdd7c00);
+  static const Color duoOrangeSecondary = Color(0xffffa500);
 
   // --- Neutral Colors (Màu trung tính) ---
   static const Color borderDark = Color(0xFF181818); // Viền đen đặc trưng (rất quan trọng)
   static const Color textPrimary = Color(0xFF4B4B4B);
   static const Color textSecondary = Color(0xFF777777);
   static const Color background = Color(0xFFFFFFFF);
-  static const Color surfaceGrey = Color(0xFFF7F7F7);
 
   // --- Semantic Colors (Màu ngữ nghĩa) ---
   static const Color disabledBg = Color(0xFFE5E5E5);
@@ -41,10 +44,20 @@ class AppColors {
 
   static const Color yellowSurfaceRoot = Color(0xffffe580);
   static const Color yellowSurface200 = Color(0xfffff5ce);
+  static const Color yellowSurface800 = Color(0xffffd333);
 
   static const Color greenSurfaceRoot = Color(0xffb9ff80);
   static const Color greenSurface250 = Color(0xffd7ffb8);
+  static const Color greenSurface750y200 = Color(0xff79d635);
 
+
+  static const Color blueCyanLight = Color(0xff00fffe);
+  static const Color blueCyanDark = Color(0xff008dff);
+
+
+  static const Color graySurfaceRoot = Color(0xFFF7F7F7);
+  static const Color graySurfaceRootOpacity40 = Color(0x40F7F7F7);
+  static const Color graySurface200 = Color(0xFFE5E5E5);
 
   ///border
   static const Color blueBorderRoot = Color(0xFF00B3FF);
