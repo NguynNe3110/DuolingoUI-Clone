@@ -95,7 +95,7 @@ class _AppProgressLinearState extends State<AppProgressLinear> {
                       Padding(
                         padding: EdgeInsets.only(left: 6,top: 4, right: 6),
                         child: FractionallySizedBox(
-                          heightFactor: 0.33, //chiem 1/3 cha
+                          heightFactor: 0.35, //chiem 1/3 cha
                           widthFactor: 1.0,   // full width
                           alignment: Alignment.topCenter, // dinh len đỉnh
                           child: Container(
