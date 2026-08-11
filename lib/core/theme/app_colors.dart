@@ -7,23 +7,48 @@ class AppColors {
 
   // --- Brand Colors (Màu thương hiệu) ---
   static const Color duoGreen = Color(0xFF00CF00);
-  static const Color duoGreenDark = Color(0xFF32A900); // Dùng cho shadow 3D
+  // static const Color duoGreenDark = Color(0xFF32A900); // Dùng cho shadow 3D
+  static const Color duoGreenDark = Color(0xFF00a600); // Dùng cho shadow 3D
   static const Color duoGreenSecondary = Color(0xFF58cc02); // Dùng cho shadow 3D
   static const Color duoGreenDarkSecondary = Color(0xFF58a700); // Dùng cho shadow 3D
 
-
+//blue
   static const Color duoBlue = Color(0xFF00b3fc);
-  static const Color duoBlueDark = Color(0xFF009bdb);
+  static const Color duoBlueDark = Color(0xFF008fca);
+
+  //yellow
   static const Color duoYellow = Color(0xFFffc500);
   static const Color duoYellowDark = Color(0xFFf3a300);
   static const Color duoYellowSecondary = Color(0xFFffc800);
-  static const Color duoRed = Color(0xFFff4b4b);
-  static const Color duoRedDark = Color(0xFFea2b2b);
-  static const Color duoPurple = Color(0xFFCE82FF);
-  static const Color duoPurpleDark = Color(0xFFA855F7);
+
+  //red
+  static const Color duoRed = Color(0xFFff3142);
+  static const Color duoRedDark = Color(0xFFde2834);
+
+  //purple
+  static const Color duoPurple = Color(0xFFdb7dff);
+  static const Color duoPurpleDark = Color(0xFFaf65d3);
+
+  //orange
   static const Color duoOrange = Color(0xFFff8f00);
-  static const Color duoOrangeDark = Color(0xffdd7c00);
+  static const Color duoOrangeDark = Color(0xffda7200);
   static const Color duoOrangeSecondary = Color(0xffffa500);
+
+  //violet
+  static const Color duoViolet = Color(0xFFdf1a91);
+  static const Color duoVioletDark = Color(0xFFb21773);
+
+  //cyan
+  static const Color duoCyan = Color(0xFF00d199);
+  static const Color duoCyanDark = Color(0xFF00a87a);
+
+  //pink
+  static const Color duoPink = Color(0xFFff7ed4);
+  static const Color duoPinkDark = Color(0xFFdc64a9);
+
+  //brown
+  static const Color duoBrown = Color(0xFFe98a33);
+  static const Color duoBrownDark = Color(0xFFba6e2a);
 
   // --- Neutral Colors (Màu trung tính) ---
   static const Color borderDark = Color(0xFF181818); // Viền đen đặc trưng (rất quan trọng)
@@ -71,6 +96,8 @@ class AppColors {
 
   static const Color grayBorderRoot = Color(0xFF878787);
   static const Color grayBorder200 = Color(0xFFE5E5E5);
+  static const Color grayBorder300 = Color(0xFFb7b7b7);
+  // static const Color grayBorder20 = Color(0xFFe9e9e9);
 
 
   /// text

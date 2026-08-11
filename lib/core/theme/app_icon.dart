@@ -40,5 +40,73 @@ class AppIcon {
 
   static const closeCircle = 'assets/icons/icon_close-circle.svg';
 
+  // trong bai hoc
+  static const questionRefreshInLesson = 'assets/icons/icon_refresh_circle.svg';
+  static const newWordInLesson = 'assets/icons/icon_sparkle_circle.svg';
+  static const hardQuestionInLesson = 'assets/icons/icon_dumbell_circle.svg';
+
+
+  static const microphoneInHome = 'assets/icons/icon_microphone_inListHome.svg';
+  static const headphoneInHome = 'assets/icons/icon_headphone_inListHome.svg';
+  static const starInHome = 'assets/icons/icon_star_inListHome.svg';
+  static const videoInHome = 'assets/icons/icon_video_inListHome.svg';
+  static const weightInHome = 'assets/icons/icon_weight_inListHome.svg';
+  static const bookInHome = 'assets/icons/icon_book_inListHome.svg';
+
+  // ICON FOR LESSION IN HOME
+  static const bookDefault = 'assets/icons/in_home/icon_book_default.svg';
+  static const bookBlue = 'assets/icons/in_home/icon_book_blue.svg';
+  static const bookBrown = 'assets/icons/in_home/icon_book_brown.svg';
+  static const bookCyan = 'assets/icons/in_home/icon_book_cyan.svg';
+  static const bookGreen = 'assets/icons/in_home/icon_book_green.svg';
+  static const bookOrange = 'assets/icons/in_home/icon_book_orange.svg';
+  static const bookPink = 'assets/icons/in_home/icon_book_pink.svg';
+  static const bookViolet = 'assets/icons/in_home/icon_book_violet.svg';
+  static const bookPurple = 'assets/icons/in_home/icon_book_purple.svg';
+  static const bookRed = 'assets/icons/in_home/icon_book_red.svg';
+
+  static const headphoneBlue = 'assets/icons/in_home/icon_headphone_blue.svg';
+  static const headphoneBrown = 'assets/icons/in_home/icon_headphone_brown.svg';
+  static const headphoneCyan = 'assets/icons/in_home/icon_headphone_cyan.svg';
+  static const headphoneDefault = 'assets/icons/in_home/icon_headphone_default.svg';
+  static const headphoneGreen = 'assets/icons/in_home/icon_headphone_green.svg';
+  static const headphoneOrange = 'assets/icons/in_home/icon_headphone_orange.svg';
+  static const headphonePink = 'assets/icons/in_home/icon_headphone_pink.svg';
+  static const headphonePurple = 'assets/icons/in_home/icon_headphone_purple.svg';
+  static const headphoneRed = 'assets/icons/in_home/icon_headphone_red.svg';
+  static const headphoneViolet = 'assets/icons/in_home/icon_headphone_violet.svg';
+
+  // static const microphoneDefault = 'assets/icons/icon_microphone_default.svg';
+
+  static const starDefault = 'assets/icons/in_home/icon_star_default.svg';
+
+  static const videoDefault = 'assets/icons/in_home/icon_video_default.svg';
+  static const videoBlue = 'assets/icons/in_home/icon_video_blue.svg';
+  static const videoBrown = 'assets/icons/in_home/icon_video_brown.svg';
+  static const videoCyan = 'assets/icons/in_home/icon_video_cyan.svg';
+  static const videoGreen = 'assets/icons/in_home/icon_video_green.svg';
+  static const videoOrange = 'assets/icons/in_home/icon_video_orange.svg';
+  static const videoPink = 'assets/icons/in_home/icon_video_pink.svg';
+  static const videoPurple = 'assets/icons/in_home/icon_video_purple.svg';
+  static const videoRed = 'assets/icons/in_home/icon_video_red.svg';
+  static const videoViolet = 'assets/icons/in_home/icon_video_violet.svg';
+
+  // blue ,default brown , cyan, green, orange, pink, violet, purple, red
+
+  static const weightViolet = 'assets/icons/icon_weight_violet.svg';
+  static const weightRed  = 'assets/icons/icon_weight_red.svg';
+  static const weightPurple = 'assets/icons/icon_weight_purple.svg';
+  static const weightPink = 'assets/icons/icon_weight_pink.svg';
+  static const weightOrange = 'assets/icons/icon_weight_orange.svg';
+  static const weightGreen = 'assets/icons/icon_weight_green.svg';
+  static const weightCyan = 'assets/icons/icon_weight_cyan.svg';
+  static const weightBrown = 'assets/icons/icon_weight_brown.svg';
+  static const weightBlue = 'assets/icons/icon_weight_blue.svg';
+  static const weightDefault = 'assets/icons/icon_weight_default.svg';
+
+
+  
+
+
 
 }
