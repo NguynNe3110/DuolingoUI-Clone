@@ -80,6 +80,7 @@ flutter:
 
   assets:
     - assets/icons/
+    - assets/icons/in_home/
     - assets/images/
     - .env
 
