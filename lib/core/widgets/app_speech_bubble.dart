@@ -136,9 +136,7 @@ class _BubblePainter extends CustomPainter {
 
     final bodyH = h - tailHeight; // thân (không tính đuôi)
     final r = math.min(radius, math.min(w, bodyH) / 2);
-    final tx = (tailOffset ?? (w - tailWidth) / 2)
-        .clamp(0.0, math.max(0.0, w - tailWidth))
-        .toDouble();
+    final tx = _resolveTx(w).clamp(0.0, math.max(0.0, w - tailWidth)).toDouble();
 
     return Path()
       ..moveTo(r, 0)
@@ -154,6 +152,19 @@ class _BubblePainter extends CustomPainter {
       ..lineTo(0, r)                                      // cạnh trái
       ..quadraticBezierTo(0, 0, r, 0)                     // góc trên-trái
       ..close();
+  }
+
+  /// [tailOffset] từ caller luôn đo trong KHÔNG GIAN THẬT (màn hình):
+  /// từ mép TRÁI bubble (up/down) hoặc mép TRÊN (left/right).
+  /// [_buildPath] vẽ trong không gian chuẩn (đuôi chĩa xuống),
+  /// nên hướng nào bị lật trục khi xoay canvas phải đổi trục offset.
+  double _resolveTx(double standardWidth) {
+    if (tailOffset == null) return (standardWidth - tailWidth) / 2; // tự căn giữa: bất động qua mirror
+    return switch (tail) {
+    // rotate(180°) [up] và rotate(-90°) [right] lật ngược trục offset
+      BubbleTail.up || BubbleTail.right => standardWidth - tailWidth - tailOffset!,
+      _ => tailOffset!,
+    };
   }
 
   @override
