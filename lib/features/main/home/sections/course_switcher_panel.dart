@@ -92,7 +92,6 @@ class _CourseSwitcherPanelState extends State<CourseSwitcherPanel> {
               },
             ),
           ),
-          // TODO: card progress "Điểm Tiếng Anh của bạn là 28" sẽ là widget riêng
           _CourseGrade(),
 
         ],
@@ -128,7 +127,6 @@ class _CourseSwitcherPanelState extends State<CourseSwitcherPanel> {
 //           ],
 //         ),
 //       ),
-//       // TODO: card progress "Điểm Tiếng Anh của bạn là 28"
 //     ],
 //   );
 // }

@@ -10,7 +10,15 @@ class AppIcon {
   static const close = 'assets/icons/icon_close.svg';
   static const duoPremium = 'assets/icons/icon_duo_premeum.svg';
   static const face = 'assets/icons/icon_face.svg';
-  static const flagFrench = 'assets/icons/icon_flag_french.svg';
+
+  static const flagFrance = 'assets/icons/icon_flag_france.svg';
+  static const flagCanada = 'assets/icons/icon_flag_canada.svg';
+  static const flagRussia = 'assets/icons/icon_flag_russia.svg';
+  static const flagSweden = 'assets/icons/icon_flag_sweden.svg';
+  static const flagUnitedState = 'assets/icons/icon_flag_us.svg';
+  static const flagVietNam = 'assets/icons/icon_flag_vietnam.svg';
+  static const flagChinese = 'assets/icons/icon_flag_vietnam.svg';
+
   static const gem = 'assets/icons/icon_gem.svg';
   static const heart = 'assets/icons/icon_heart.svg';
   static const home = 'assets/icons/icon_home_mainshell.svg';
@@ -25,6 +33,7 @@ class AppIcon {
   static const streak = 'assets/icons/icon_streak.svg';
   static const target = 'assets/icons/icon_target.svg';
   static const time = 'assets/icons/icon_time.svg';
+  static const timeDisable = 'assets/icons/icon_time_disable.svg';
   static const trash = 'assets/icons/icon_trash.svg';
   static const trophyGold = 'assets/icons/icon_trophy_gold_mainshell.svg';
   static const volumeOff = 'assets/icons/icon_volume_off.svg';
@@ -32,7 +41,6 @@ class AppIcon {
   static const logoTextGreen = 'assets/icons/logo_text_while.svg';
   static const logoTextWhite = 'assets/icons/logo_text_green.svg';
   static const imgSuper = 'assets/icons/img_super.svg';
-  static const imgSuperGradiend = 'assets/icons/img_super_gradient.svg';
 
   static const phone = 'assets/icons/icon_phone.svg';
   static const facebook = 'assets/icons/icon_facebook.svg';
@@ -93,20 +101,56 @@ class AppIcon {
 
   // blue ,default brown , cyan, green, orange, pink, violet, purple, red
 
-  static const weightViolet = 'assets/icons/icon_weight_violet.svg';
-  static const weightRed  = 'assets/icons/icon_weight_red.svg';
-  static const weightPurple = 'assets/icons/icon_weight_purple.svg';
-  static const weightPink = 'assets/icons/icon_weight_pink.svg';
-  static const weightOrange = 'assets/icons/icon_weight_orange.svg';
-  static const weightGreen = 'assets/icons/icon_weight_green.svg';
-  static const weightCyan = 'assets/icons/icon_weight_cyan.svg';
-  static const weightBrown = 'assets/icons/icon_weight_brown.svg';
-  static const weightBlue = 'assets/icons/icon_weight_blue.svg';
-  static const weightDefault = 'assets/icons/icon_weight_default.svg';
+  static const weightViolet = 'assets/icons/in_home/icon_weight_violet.svg';
+  static const weightRed  = 'assets/icons/in_home/icon_weight_red.svg';
+  static const weightPurple = 'assets/icons/in_home/icon_weight_purple.svg';
+  static const weightPink = 'assets/icons/in_home/icon_weight_pink.svg';
+  static const weightOrange = 'assets/icons/in_home/icon_weight_orange.svg';
+  static const weightGreen = 'assets/icons/in_home/icon_weight_green.svg';
+  static const weightCyan = 'assets/icons/in_home/icon_weight_cyan.svg';
+  static const weightBrown = 'assets/icons/in_home/icon_weight_brown.svg';
+  static const weightBlue = 'assets/icons/in_home/icon_weight_blue.svg';
+  static const weightDefault = 'assets/icons/in_home/icon_weight_default.svg';
 
 
-  
+  static const fastForwardDefault = 'assets/icons/in_home/icon_fast_forward_default.svg';
+  static const battery = 'assets/icons/icon_battery.svg';
 
 
+  static const duoBeginner = 'assets/icons/duo_beginner.svg';
+
+
+  /// images
+  static const imgSuperGradiend = 'assets/icons/img_super_gradient.svg';
+  static const bannerFriend = 'assets/images/banner_friend.png';
+
+  static const chestFriend = 'assets/images/chest_friend.png';
+  static const chestWood = 'assets/images/chest_wood.png';
+  static const chestGold = 'assets/images/chest_gold.png';
+  static const chestLegend = 'assets/images/chest_legend.png';
+
+  static const imgTrophyBlock = 'assets/images/trophy_block.png';
+  static const imgTrophyCopper = 'assets/images/trophy_copper.png';
+  static const imgTrophySliver = 'assets/images/trophy_sliver.png';
+  static const imgTrophyGold = 'assets/images/trophy_gold.png';
+  static const imgTrophyTurquoise = 'assets/images/trophy_turquoise.png';
+
+  static const imgFABLeaderboard = 'assets/images/FAB_leaderboard.png';
+
+  static const arrowDownward = 'assets/images/arrow_downward.png';
+  static const arrowUpward = 'assets/images/arrow_upward.png';
+
+  static const medal_gold = 'assets/images/medal_gold.png';
+  static const medal_sliver = 'assets/images/medal_sliver.png';
+  static const medal_copper = 'assets/images/medal_copper.png';
+
+
+  static const avatar = 'assets/images/avatar.png';
+
+  static String medalForRank(int rank) => switch (rank) {
+    1 => medal_gold,
+    2 => medal_sliver,
+    _ => medal_copper,
+  };
 
 }

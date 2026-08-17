@@ -43,7 +43,7 @@ class AppColors {
   static const Color duoCyanDark = Color(0xFF00a87a);
 
   //pink
-  static const Color duoPink = Color(0xFFff7ed4);
+  static const Color duoPink = Color(0xFFff7dd4);
   static const Color duoPinkDark = Color(0xFFdc64a9);
 
   //brown
@@ -54,7 +54,7 @@ class AppColors {
   static const Color borderDark = Color(0xFF181818); // Viền đen đặc trưng (rất quan trọng)
   static const Color textPrimary = Color(0xFF4B4B4B);
   static const Color textSecondary = Color(0xFF777777);
-  static const Color background = Color(0xFFFFFFFF);
+  static const Color background = Color(0xFFFFFFFd);
 
   // --- Semantic Colors (Màu ngữ nghĩa) ---
   static const Color disabledBg = Color(0xFFE5E5E5);
@@ -72,6 +72,7 @@ class AppColors {
   static const Color yellowSurface800 = Color(0xffffd333);
 
   static const Color greenSurfaceRoot = Color(0xffb9ff80);
+  static const Color greenSurface200 = Color(0xffcdffb0);
   static const Color greenSurface250 = Color(0xffd7ffb8);
   static const Color greenSurface750y200 = Color(0xff79d635);
 
@@ -108,9 +109,18 @@ class AppColors {
 
   static const Color textRedOnSurface150 = Color(0xFFff4b4b);
   static const Color textYellowOnSurface200 = Color(0xFFda7400);
+
   static const Color textGreenOnSurface250 = Color(0xFF58a700);
+  static const Color textGreenOnSurface200 = Color(0xFF32a800);
+
+
   static const Color textBlueOnSurface150 = Color(0xFF1cb0f6);
   static const Color textOnBackground = Color(0xFF4b4b4b);
+
+  static const Color textOnPrimaryBlur = Color(0xb2ffffff);
+  static const Color textWhiteOnBackground = Color(0xFFfffffc);
+
+  static const Color textGrayOnBackground = Color(0xFF9d9d9d);
 
 
 // =========================== dark theme ==================================================

@@ -14,6 +14,7 @@ class AppProgressLinear extends StatefulWidget {
   // final Color fillColor;
   // final Color highlightColor;
   final String? label;
+  final String? hint;
   final ProgressVariant? progressBarState;
 
 
@@ -24,6 +25,7 @@ class AppProgressLinear extends StatefulWidget {
     // this.onClose,
     this.height,
     this.label,
+    this.hint,
     this.progressBarState = ProgressVariant.basic,
 
   });
@@ -111,6 +113,24 @@ class _AppProgressLinearState extends State<AppProgressLinear> {
                   ),
                 ),
 
+                // Phải dùng Positioned.fill chứ không dùng Center trần: Center trần trong Stack
+                // với constraint chiều cao không giới hạn sẽ co lại bằng chiều cao text và dính lên đỉnh,
+                // không căn giữa theo chiều dọc của thanh được.
+
+                if (widget.hint != null)
+                  Positioned.fill(          // chiếm đúng kích thước Stack → căn giữa chuẩn
+                    child: Center(
+                      child: Text(
+                        widget.hint!,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                          color: palette.hintColor,
+                        ),
+                      ),
+                    ),
+                  ),
+
                 // 3. Text (Căn giữa theo phần Fill) - THUẬT TOÁN DECLARATIVE
                 if (widget.label != null)
                   FractionallySizedBox( //có khả năng chiếm đúng một TỈ LỆ (fraction) chiều rộng của thằng cha (Stack).
@@ -152,7 +172,8 @@ class ProgressBarPalette {
     this.fillColor,
     this.fillGradient,
     this.textColor,
-    required this.highlightColor
+    required this.highlightColor,
+    this.hintColor = AppColors.grayBorder300,
   });
 
   final Color? trackColor; // nen
@@ -160,6 +181,7 @@ class ProgressBarPalette {
   final Gradient? fillGradient;
   final Color? textColor;
   final Color highlightColor; // progres hightlitgh
+  final Color hintColor;
 
   static ProgressBarPalette resolve(ProgressVariant variant ) {
     switch(variant){

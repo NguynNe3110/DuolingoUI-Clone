@@ -1,5 +1,6 @@
 import 'package:duolingo_ui_clone/core/theme/app_text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 // import 'package:flutter_mobilehub/core/app_route.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,7 +13,7 @@ import 'core/routes/app_router.dart';
 Future<void> main() async {
   // Đảm bảo Flutter binding đã khởi tạo trước khi gọi các hàm async
   WidgetsFlutterBinding.ensureInitialized();
-
+  debugPaintBaselinesEnabled = false; //hiển thị gạch chân để debug việc căn chỉnh chữ.
   // await dotenv.load(fileName: ".env");
 
   // 3. GỌI HÀM SETUP DEPENDENCIES TRƯỚC TIÊN
@@ -49,8 +50,8 @@ class MyApp extends StatelessWidget {
       ),
 
       // routerConfig: appRouter, // nhúng route vào build
-      routerConfig: MockComponentRouter, // viết vào file mockScreen thì ở đây
-      // routerConfig: MockScreenRouter, // chỉ danh cho xây dựng cả màn hình
+      // routerConfig: MockComponentRouter, // viết vào file mockScreen thì ở đây
+      routerConfig: MockScreenRouter, // chỉ danh cho xây dựng cả màn hình
       // routerConfig: UiCheatRouter, //
 
 
