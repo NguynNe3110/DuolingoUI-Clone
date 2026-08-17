@@ -88,35 +88,42 @@ class HomeHeader extends StatelessWidget {
 
     // final a = MockHeaderHome;
 
-    return  Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        HeaderItem(
-            icon: AppIcon.flagFrance,
-            iconWidth: 24,
-            value: '${MockHeaderHome.courseXp}',
-            onTap: onFlagTap
-        ),
-        HeaderItem(
-            icon: AppIcon.streak,
-            value: '${MockHeaderHome.streak}',
-            valueColor: AppColors.duoOrange,
-            onTap: onStreakTap
-        ),
-        HeaderItem(
-            icon: AppIcon.gem,
-            value: '${MockHeaderHome.gems}',
-            valueColor: AppColors.duoBlue,
-            onTap: onGemTap
-        ),
-        HeaderItem(
-            icon: AppIcon.battery,
-            iconWidth: 32,
-            value: '${MockHeaderHome.energy}',
-            valueColor: AppColors.duoPink,
-            onTap: onEnergyTap
-        ),
-      ],
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(bottom: BorderSide(color: AppColors.grayBorder200, width: 2), )
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          HeaderItem(
+              icon: AppIcon.flagFrance,
+              iconWidth: 24,
+              value: '${MockHeaderHome.courseXp}',
+              onTap: onFlagTap
+          ),
+          HeaderItem(
+              icon: AppIcon.streak,
+              value: '${MockHeaderHome.streak}',
+              valueColor: AppColors.duoOrange,
+              onTap: onStreakTap
+          ),
+          HeaderItem(
+              icon: AppIcon.gem,
+              value: '${MockHeaderHome.gems}',
+              valueColor: AppColors.duoBlue,
+              onTap: onGemTap
+          ),
+          HeaderItem(
+              icon: AppIcon.battery,
+              iconWidth: 32,
+              value: '${MockHeaderHome.energy}',
+              valueColor: AppColors.duoPink,
+              onTap: onEnergyTap
+          ),
+        ],
+      ),
     );
+
+
   }
 }

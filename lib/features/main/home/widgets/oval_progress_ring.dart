@@ -7,7 +7,7 @@ class OvalProgressRing extends StatelessWidget {
     super.key,
     required this.progress,      // 0..1
     this.segments = 4,
-    this.strokeWidth = 8,
+    required this.strokeWidth,
     this.gapDegrees = 20,
     required this.fillColor,
     this.trackColor = const Color(0xFFE4E4E4),
