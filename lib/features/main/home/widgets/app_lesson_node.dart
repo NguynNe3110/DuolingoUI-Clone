@@ -2,13 +2,15 @@ import 'dart:async';
 
 import 'package:duolingo_ui_clone/core/exports/app_export_theme.dart';
 import 'package:duolingo_ui_clone/core/theme/app_radius.dart';
+import 'package:duolingo_ui_clone/features/main/home/widgets/unit_color_scope.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AppLessonNode extends StatefulWidget {
   final LessonNodeType lessonType;
-  final LessonNodeColor unitColor;
+  final LessonNodeColor? unitColor;
   final bool isLocked;
+  final bool isLearnAhead;
 
   final double size;
   final double aspectRatio;
@@ -19,9 +21,10 @@ class AppLessonNode extends StatefulWidget {
   const AppLessonNode({
     super.key,
     required this.lessonType,
-    required this.unitColor,
+    this.unitColor,
     this.isLocked = false,
-    this.size = 70,
+    this.isLearnAhead = false,
+    this.size = 58, // 70
     this.aspectRatio = 1.1,
     this.depth = 8,
     this.shineInset = 6,
@@ -48,7 +51,7 @@ class _AppLessonNodeState extends State<AppLessonNode> {
   }
 
   void _handleTapUp(TapUpDetails details) {
-    _releaseTimer = Timer(const Duration(milliseconds: 80), () {
+    _releaseTimer = Timer(const Duration(milliseconds: 80), () {  // de chac chan  hieu ung xay ra truoc khi bij dispose
       if (mounted) setState(() => _pressed = false);
     });
     widget.onPressed?.call();
@@ -63,25 +66,35 @@ class _AppLessonNodeState extends State<AppLessonNode> {
 
   @override
   Widget build(BuildContext context) {
+    final effectiveColor = widget.unitColor ?? UnitColorScope.of(context);
+
     // lay mau
-    final theme = LessonNodeTheme.of(widget.unitColor);
+    // final theme = LessonNodeTheme.of(widget.unitColor); // casch cu
+    final theme = LessonNodeTheme.of(effectiveColor);
 
     // lay pathIcon
-    final iconPath = widget.isLocked
-        ? LessonNodeIcon.locked(widget.lessonType)
-        : LessonNodeIcon.of(widget.lessonType, widget.unitColor);
+    String iconPath;
+    if (widget.isLocked) {
+      iconPath = LessonNodeIcon.locked(widget.lessonType);
+    } else if (widget.isLearnAhead) {
+      iconPath = LessonNodeIcon.learnAhead(); // THÊM: Icon fast-forward
+    } else {
+      iconPath = LessonNodeIcon.of(widget.lessonType, effectiveColor);// truyền vao mau
+    }
+
     final Color shineColor = Color(0x4DFFFFFF);
     
-    return Align(
-      child: GestureDetector(
+    return GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTapDown: _handleTapDown,
+
+        onTapDown: _handleTapDown,// 3 hanh vi cua gesturedetector
         onTapUp: _handleTapUp,
         onTapCancel: _handleTapCancel,
+
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 80),
-          curve: Curves.easeOut,
-          width: widget.size * widget.aspectRatio,
+          curve: Curves.easeOut,// hieu ung dien giai
+          width: widget.size * widget.aspectRatio, // logic lafm hinh elip
           height: widget.size,
           transform: Matrix4.translationValues(
             0,
@@ -147,7 +160,6 @@ class _AppLessonNodeState extends State<AppLessonNode> {
             ),
           ),
         ),
-      ),
     );
   }
 }
@@ -163,9 +175,10 @@ enum LessonNodeType {
   video, //calling,
   weight, //practices,
   star, //review
+  fastForward, // học vượt
 }
 
-class LessonNodeTheme {
+class LessonNodeTheme { // lay mau cho back & depth
   final Color background;
   final Color depth;
   const LessonNodeTheme(this.background, this.depth);
@@ -186,7 +199,7 @@ class LessonNodeTheme {
   }
 }
 
-class LessonNodeIcon {
+class LessonNodeIcon { // lay icon phu hop voi mau
   static String of(LessonNodeType type, LessonNodeColor color) {
     return switch (type) {
       LessonNodeType.book => switch (color) {
@@ -237,18 +250,23 @@ class LessonNodeIcon {
         LessonNodeColor.Violet => AppIcon.weightViolet,
         _ => AppIcon.weightDefault,
       },
-      LessonNodeType.star => AppIcon.starDefault, // Star chỉ có 1 màu default
+      LessonNodeType.star => AppIcon.starDefault, // Star chỉ có 1  cái default
+      LessonNodeType.fastForward => AppIcon.fastForwardDefault,
     };
   }
 
   static String locked(LessonNodeType type) {
-    // Giả sử bài khóa thì dùng icon default (màu xám/trắng)
     return switch (type) {
       LessonNodeType.book => AppIcon.bookDefault,
       LessonNodeType.headphone => AppIcon.headphoneDefault,
       LessonNodeType.video => AppIcon.videoDefault,
       LessonNodeType.weight => AppIcon.weightDefault,
       LessonNodeType.star => AppIcon.starDefault,
+      LessonNodeType.fastForward => AppIcon.fastForwardDefault,
     };
+  }
+
+  static String learnAhead(){
+    return AppIcon.fastForwardDefault;
   }
 }
