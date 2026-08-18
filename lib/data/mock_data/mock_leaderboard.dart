@@ -4,9 +4,9 @@ import 'package:duolingo_ui_clone/domain/entities/leaderboard_user.dart';
 import '../../core/theme/app_icon.dart';
 
 class LeaderboardState {
-  final List<LeaderboardUser> users;
-
-  const LeaderboardState({required this.users});
+  // final List<LeaderboardUser> users;
+  //
+  // const LeaderboardState({required this.users});
 
 
   static const List<LeaderboardUser> mock =
@@ -26,8 +26,3 @@ class LeaderboardState {
   ];
 
 }
-
-
-
-const List<LeaderboardUser> _users = [
-];

@@ -73,12 +73,19 @@ class LeaderboardHeader extends StatelessWidget {
             ),
           ),
 
-          // viền chỉ hiện khi cuộn
+          // tạo container chỉ cao 2px để đổi màu
           AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             height: 2,
             color: elevated ? AppColors.grayBorder200 : Colors.transparent,
           ),
+          // nếu k phải khai báo trong decorate
+          // border: Border(
+          //   bottom: BorderSide( // khai bao ở đây
+          //     color: elevated ? AppColors.grayBorder200 : Colors.transparent,
+          //     width: 2,
+          //   ),
+          // ),
         ],
       ),
     );
