@@ -6,8 +6,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../theme/app_colors.dart';
 
 class AppButton extends StatefulWidget {
-  final String label;
+  final String? label;
   final String? iconPath;
+
+  final IconData? icon;
+  final Color? iconColor;
 
   // 1. Mở khóa các biến custom color
   final Color? backgroundColor;
@@ -27,8 +30,10 @@ class AppButton extends StatefulWidget {
 
   const AppButton({
     super.key,
-    required this.label,
+    this.label,
     this.iconPath,
+    this.icon,
+    this.iconColor,
     this.backgroundColor, // Custom nền
     this.depthColor,      // Custom độ sâu (shadow)
     this.textColor,       // Custom chữ
@@ -130,26 +135,38 @@ class _AppButtonState extends State<AppButton> {
             ),
           ],
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            if (widget.iconPath != null) ...[
-              // Nếu có custom textColor thì tint luôn icon cho đồng bộ (optional)
-              SvgPicture.asset(
-                widget.iconPath!,
-                width: 20,
-                height: 20,
-                // colorFilter: ColorFilter.mode(finalTextColor, BlendMode.srcIn),
-              ),
-              const SizedBox(width: 8),
+        child: Padding(
+          padding: EdgeInsets.all(8),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (widget.iconPath != null) ...[
+                // Nếu có custom textColor thì tint luôn icon cho đồng bộ (optional)
+                SvgPicture.asset(
+                  widget.iconPath!,
+                  width: 20,
+                  height: 20,
+                  // colorFilter: ColorFilter.mode(finalTextColor, BlendMode.srcIn),
+                ),
+                const SizedBox(width: 6),
+              ],
+              if(widget.icon != null) ...[
+                Icon(
+                  widget.icon,
+                  weight: 20,
+                  color: widget.iconColor,
+                ),
+                const SizedBox(width: 8),
+              ],
+              if(widget.label != null)
+                Text(
+                  widget.label!,
+                  style: widget.textStyle ??
+                      textTheme.labelMedium?.copyWith(color: finalTextColor), // Dùng màu đã override
+                ),
             ],
-            Text(
-              widget.label,
-              style: widget.textStyle ??
-                  textTheme.labelMedium?.copyWith(color: finalTextColor), // Dùng màu đã override
-            ),
-          ],
-        ),
+          ),
+        )
       ),
     );
   }
