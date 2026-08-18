@@ -121,6 +121,7 @@ class AppColors {
   static const Color textWhiteOnBackground = Color(0xFFfffffc);
 
   static const Color textGrayOnBackground = Color(0xFF9d9d9d);
+  static const Color textBlackOnBackground = Color(0xFF3C3C3C);
 
 
 // =========================== dark theme ==================================================

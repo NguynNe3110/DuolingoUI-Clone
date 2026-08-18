@@ -30,6 +30,7 @@ class AppIcon {
   static const phonebook = 'assets/icons/icon_phonebook.svg';
   static const practices = 'assets/icons/icon_practices_mainshell.svg';
   static const share = 'assets/icons/icon_share.svg';
+  static const shareDisable = 'assets/icons/icon_share_disable.svg';
   static const streak = 'assets/icons/icon_streak.svg';
   static const target = 'assets/icons/icon_target.svg';
   static const time = 'assets/icons/icon_time.svg';
@@ -143,6 +144,17 @@ class AppIcon {
   static const medal_gold = 'assets/images/medal_gold.png';
   static const medal_sliver = 'assets/images/medal_sliver.png';
   static const medal_copper = 'assets/images/medal_copper.png';
+
+  static const feeddat32diem = 'assets/images/feed_dat32diem.png';
+  static const feeddungnhieu = 'assets/images/feed_dung_nhieu.png';
+  static const feedFixBug = 'assets/images/feed_fix_bug.png';
+  static const feedHuman= 'assets/images/feed_human.png';
+  static const feedKiemKn= 'assets/images/feed_kiem_kn.png';
+  static const feedSpeak= 'assets/images/feed_speak.png';
+  static const feedSpeed= 'assets/images/feed_speed.png';
+  static const feedStreakFirst = 'assets/images/feed_streak_first.png';
+  static const feedStreakSelf = 'assets/images/feed_streak_self.png';
+
 
 
   static const avatar = 'assets/images/avatar.png';
