@@ -4,6 +4,8 @@
 // ==========================================
 import 'package:flutter/cupertino.dart';
 
+import '../../core/theme/app_icon.dart';
+
 enum FeedContentType { plainText, textCard, achievement }
 
 class FeedEntities {
@@ -11,9 +13,9 @@ class FeedEntities {
   final String pathAvatar;
   final String? actionText; // VD: "đã chia sẻ một câu"
   final String timeAgo;
-  final String content;
   final FeedContentType contentType;
   final String pathIcon;
+  final Widget child;
   final int? likeCount;
   final int? commentCount;
   final bool isLiked;
@@ -26,9 +28,9 @@ class FeedEntities {
     required this.pathAvatar,
     this.actionText,
     required this.timeAgo,
-    required this.content,
     required this.contentType,
     required this.pathIcon,
+    required this.child,
     this.likeCount,
     this.commentCount,
     required this.isLiked,

@@ -145,7 +145,7 @@ class _AppButtonState extends State<AppButton> {
                 SvgPicture.asset(
                   widget.iconPath!,
                   width: 20,
-                  height: 20,
+                  // height: 20,
                   // colorFilter: ColorFilter.mode(finalTextColor, BlendMode.srcIn),
                 ),
                 const SizedBox(width: 6),

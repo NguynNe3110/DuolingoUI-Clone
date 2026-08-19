@@ -18,7 +18,7 @@ final GoRouter MockScreenRouter = GoRouter(
   debugLogDiagnostics: true, // in ra log path cua gorouter
   initialLocation: '/',
   routes: [
-    GoRoute(path: '/', builder: (context, state) => NewsFeedScreen()),
+    GoRoute(path: '/', builder: (context, state) => ProfileScreen()),
   ],
 );
 

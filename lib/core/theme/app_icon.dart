@@ -22,7 +22,12 @@ class AppIcon {
   static const gem = 'assets/icons/icon_gem.svg';
   static const heart = 'assets/icons/icon_heart.svg';
   static const home = 'assets/icons/icon_home_mainshell.svg';
+
   static const invite = 'assets/icons/icon_invite.svg';
+  static const inviteDisable = 'assets/icons/icon_invite_disable.svg';
+  static const inviteStreakBadge= 'assets/icons/icon_invite_streak_badge.svg';
+  static const inviteStreakEmpty= 'assets/icons/icon_invite_streak_empty.svg';
+
   static const lightning = 'assets/icons/icon_lightning.svg';
   static const microphone = 'assets/icons/icon_microphone.svg';
   static const mission = 'assets/icons/icon_mission_mainshell.svg';
@@ -124,6 +129,7 @@ class AppIcon {
   /// images
   static const imgSuperGradiend = 'assets/icons/img_super_gradient.svg';
   static const bannerFriend = 'assets/images/banner_friend.png';
+  static const bannerSelf = 'assets/images/banner_self.png';
 
   static const chestFriend = 'assets/images/chest_friend.png';
   static const chestWood = 'assets/images/chest_wood.png';
@@ -147,7 +153,7 @@ class AppIcon {
 
   static const feeddat32diem = 'assets/images/feed_dat32diem.png';
   static const feeddungnhieu = 'assets/images/feed_dung_nhieu.png';
-  static const feedFixBug = 'assets/images/feed_fix_bug.png';
+  static const feedFixBug = 'assets/images/feed_fixbug.png';
   static const feedHuman= 'assets/images/feed_human.png';
   static const feedKiemKn= 'assets/images/feed_kiem_kn.png';
   static const feedSpeak= 'assets/images/feed_speak.png';
@@ -155,7 +161,15 @@ class AppIcon {
   static const feedStreakFirst = 'assets/images/feed_streak_first.png';
   static const feedStreakSelf = 'assets/images/feed_streak_self.png';
 
+  static const achievementDiscover = 'assets/images/achievement_discover.png';
+  static const achievementMorning = 'assets/images/achievement_morning.png';
+  static const achievementOwl = 'assets/images/achievement_owl.png';
+  static const achievementStreak = 'assets/images/achievement_streak.png';
 
+  static const badgeMonth1 = 'assets/images/badge_month1.png';
+  static const badgeMonth2 = 'assets/images/badge_month2.png';
+  static const badgeMonth3 = 'assets/images/badge_month3.png';
+  static const badgeMonth4 = 'assets/images/badge_month4.png';
 
   static const avatar = 'assets/images/avatar.png';
 

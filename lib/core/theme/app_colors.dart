@@ -76,6 +76,9 @@ class AppColors {
   static const Color greenSurface250 = Color(0xffd7ffb8);
   static const Color greenSurface750y200 = Color(0xff79d635);
 
+  static const Color greenSurface450 = Color(0xffa7f47d);
+
+
 
   static const Color blueCyanLight = Color(0xff00fffe);
   static const Color blueCyanDark = Color(0xff008dff);

@@ -98,7 +98,7 @@ class _AppHeaderState extends State<AppHeader> {
       mainAxisSize: MainAxisSize.min,
       children: [
         AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 250),
           color: _isScrolled
               ? (widget.transferBackgroundColor ?? widget.backgroundColor)
               : widget.backgroundColor,
@@ -108,7 +108,7 @@ class _AppHeaderState extends State<AppHeader> {
 
         // Border riêng
         AnimatedOpacity(
-          duration: const Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 250),
           opacity: _isScrolled ? 1.0 : 0.0,
           child: Container(
             height: 2,
