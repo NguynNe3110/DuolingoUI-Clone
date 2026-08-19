@@ -1,5 +1,7 @@
 import 'package:duolingo_ui_clone/core/widgets/app_button.dart';
+import 'package:duolingo_ui_clone/core/widgets/app_speech_bubble.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_icon.dart';
@@ -51,9 +53,9 @@ class _FeedItemWidgetState extends State<FeedItemWidget> {
               ),
               const SizedBox(height: 12),
               FeedBodyItem(
-                content: widget.item.content,
                 contentType: widget.item.contentType,
 
+                child: widget.item.child,
                 iconPath: widget.item.pathIcon,
               ),
               const SizedBox(height: 12),
@@ -139,15 +141,15 @@ class FeedHeaderItem extends StatelessWidget {
 // 5. BODY COMPONENT (Xử lý 2 kiểu layout Icon)
 // ==========================================
 class FeedBodyItem extends StatelessWidget {
-  final String content;
   final FeedContentType contentType;
   final String iconPath;
+  final Widget child;
 
   const FeedBodyItem({
     super.key,
-    required this.content,
     required this.contentType,
   required this.iconPath,
+    required this.child,
   });
 
   @override
@@ -166,7 +168,7 @@ class FeedBodyItem extends StatelessWidget {
           offset: Offset(0, contentType == FeedContentType.plainText ? -35 : 0),
           child: Image.asset(
               iconPath,
-            width: 48,
+            width: 82,
           ),
 
         ),
@@ -177,38 +179,47 @@ class FeedBodyItem extends StatelessWidget {
   Widget _buildContentWidget() {
     if (contentType == FeedContentType.textCard) {
       // Kiểu 1: Text nằm trong Card xám (như "a big potato")
-      return Container(
-        padding: const EdgeInsets.all(12),
-        decoration: BoxDecoration(
-          color: const Color(0xFFF7F7F7),
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: const Color(0xFFE5E5E5)),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.flag, color: Colors.red, size: 20), // Giả lập cờ Mỹ
-            const SizedBox(height: 8),
-            Text(
-              content,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              "một củ khoai tây to", // Giả lập nghĩa
-              style: const TextStyle(fontSize: 13, color: Colors.grey),
-            ),
-          ],
-        ),
+      // return Container(
+      //   padding: const EdgeInsets.all(12),
+      //   decoration: BoxDecoration(
+      //     color: const Color(0xFFF7F7F7),
+      //     borderRadius: BorderRadius.circular(12),
+      //     border: Border.all(color: const Color(0xFFE5E5E5)),
+      //   ),
+      //   child: Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       SvgPicture.asset(
+      //           iconFlag,
+      //         width: 24,
+      //       ),
+      //       const SizedBox(height: 8),
+      //       Text(
+      //         content,
+      //         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+      //       ),
+      //       const SizedBox(height: 4),
+      //       Text(
+      //         "một củ khoai tây to", // Giả lập nghĩa
+      //         style: const TextStyle(fontSize: 13, color: Colors.grey),
+      //       ),
+      //     ],
+      //   ),
+      // );
+      return AppSpeechBubble(
+          child: child,
+        tail: BubbleTail.right,
+
       );
     } else {
       // Kiểu 2: Text thường (như "400 ngày streak")
       return Padding(
         padding: const EdgeInsets.only(top: 10), // Căn chỉnh nhẹ cho thẳng hàng với icon
-        child: Text(
-          content,
-          style: const TextStyle(fontSize: 15, color: Colors.black87, height: 1.4),
-        ),
+        // child: Text(
+        //   content,
+        //   style: const TextStyle(fontSize: 15, color: Colors.black87, height: 1.4),
+        // ),
+        child: child,
       );
     }
   }

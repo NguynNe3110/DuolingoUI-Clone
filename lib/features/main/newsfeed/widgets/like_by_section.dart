@@ -13,7 +13,7 @@ class LikedBySection extends StatelessWidget {
       children: [
         // Stack để xếp chồng Avatar
         SizedBox(
-          width: names.length >= 3 ? 60 : 20, // Đủ rộng cho 3 avatar chồng lên nhau
+          width: names.length >= 3 ? 60 : 20,// 03 thì 1
           height: 24,
           child: Stack(
             children: List.generate(names.length > 3 ? 3 : names.length, (index) {
