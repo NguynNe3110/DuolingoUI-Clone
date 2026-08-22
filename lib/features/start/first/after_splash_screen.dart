@@ -8,6 +8,7 @@ import 'package:duolingo_ui_clone/core/widgets/app_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class AfterSplashScreen extends StatelessWidget{
   @override
@@ -37,7 +38,7 @@ class AfterSplashScreen extends StatelessWidget{
                         SizedBox(height: AppSpacing.S8  ,),
 
                         Text('Học miễn phí. Suốt đời',
-                          style: AppTextTheme.light.titleSmall,
+                          style: AppTextTheme.light.titleSmall//.copyWith(color: AppColors.textGrayOnBackground),
                         ),
                       ],
                     )
@@ -55,14 +56,21 @@ class AfterSplashScreen extends StatelessWidget{
 
                     AppButton(
                       label: 'TÔI ĐÃ CÓ TÀI KHOẢN',
-                      onPressed: () => {},
+                      onPressed: () => {
+                        context.pushNamed(
+                          'login',
+                          // pathParameters: {'id': '123'}, // Truyền param vào URL
+                          // extra: {'data': 'some_object'}, // Truyền object phức tạp (không hiển thị trên URL)
+                        )
+                      },
                       backgroundColor: AppColors.background,
                       textColor: AppColors.duoGreen,
                       borderColor: AppColors.grayBorder200,
                       depthColor: AppColors.grayBorder200,
                     ),
                   ],
-                )
+                ),
+                SizedBox(height: 24,)
               ],
             )
       ),

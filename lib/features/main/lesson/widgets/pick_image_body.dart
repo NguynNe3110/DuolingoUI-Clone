@@ -1,4 +1,5 @@
 import 'package:duolingo_ui_clone/core/exports/app_export_theme.dart';
+import 'package:duolingo_ui_clone/core/theme/app_icon.dart';
 import 'package:duolingo_ui_clone/core/widgets/app_answer_card.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +22,14 @@ class PickImageBody extends StatelessWidget {
   AnswerCardStatus _statusOf(String option) {
     if (checkedCorrect != null) {
       return option == selected
-          ? (checkedCorrect! ? AnswerCardStatus.correct : AnswerCardStatus.wrong)
+          ? (checkedCorrect!
+                ? AnswerCardStatus.correct
+                : AnswerCardStatus.wrong)
           : AnswerCardStatus.idle;
     }
-    return option == selected ? AnswerCardStatus.selected : AnswerCardStatus.idle;
+    return option == selected
+        ? AnswerCardStatus.selected
+        : AnswerCardStatus.idle;
   }
 
   @override
@@ -35,7 +40,7 @@ class PickImageBody extends StatelessWidget {
         crossAxisCount: 2,
         mainAxisSpacing: 16,
         crossAxisSpacing: 16,
-        childAspectRatio: 0.68,
+        childAspectRatio: 0.73,
         children: [
           for (var i = 0; i < exercise.options.length; i++)
             AppAnswerCard(
@@ -43,12 +48,19 @@ class PickImageBody extends StatelessWidget {
               onPressed: () => onSelect(exercise.options[i]),
               child: Column(
                 children: [
-                  Expanded(child: Center(child: _ImageMock(
-                    asset: exercise.imageAssets?[i] ?? '',
-                  ))),
+                  Expanded(
+                    child: Center(
+                      child: _ImageMock(asset: exercise.imageAssets?[i] ?? ''),
+                    ),
+                  ),
                   const SizedBox(height: 8),
-                  Text(exercise.options[i],
-                      style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
+                  Text(
+                    exercise.options[i],
+                    style: const TextStyle(
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -63,8 +75,28 @@ class _ImageMock extends StatelessWidget {
   final String asset;
   const _ImageMock({required this.asset});
 
+  String _resolveAsset() {
+    return switch (asset) {
+      'sugar.svg' => AppIcon.lessonSuggar,
+      'milk.svg' => AppIcon.lessonMilk,
+      'tea.svg' => AppIcon.lessonTea,
+      'coffee.svg' => AppIcon.lessonCafe,
+      '' => AppIcon.lessonTea,
+      _ => asset,
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Icon(Icons.image_outlined, size: 90, color: AppColors.grayBorder200);
+    final resolvedAsset = _resolveAsset();
+    return Image.asset(
+      resolvedAsset,
+      fit: BoxFit.contain,
+      errorBuilder: (_, __, ___) => const Icon(
+        Icons.image_outlined,
+        size: 90,
+        color: AppColors.grayBorder200,
+      ),
+    );
   }
 }

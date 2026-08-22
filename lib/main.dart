@@ -49,9 +49,9 @@ class MyApp extends StatelessWidget {
 
       ),
 
-      // routerConfig: appRouter, // nhúng route vào build
+      routerConfig: appRouter, // nhúng route vào build
+      // routerConfig: MockScreenRouter, // chỉ danh cho xây dựng cả màn hình
       // routerConfig: MockComponentRouter, // viết vào file mockScreen thì ở đây
-      routerConfig: MockScreenRouter, // chỉ danh cho xây dựng cả màn hình
       // routerConfig: UiCheatRouter, //
       // routerConfig: UiPropertyReferenceRouter, // mở "Từ điển thuộc tính Flutter" (ui_property_reference.dart)
 

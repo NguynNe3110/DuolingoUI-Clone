@@ -1,3 +1,4 @@
+import '../../../../data/mock_data/mock_exercises.dart';
 import '../../../../domain/entities/exercise_entities.dart';
 
 class LessonState {
@@ -14,11 +15,17 @@ class LessonState {
   });
 
   const LessonState.initial()
-      : this(exercises: Exercise.mock, currentIndex: 0, combo: 0, energy: 5);
+    : this(
+        exercises: MockExercises.defaultLesson,
+        currentIndex: 0,
+        combo: 0,
+        energy: 25,
+      );
 
   double get progress =>
       exercises.isEmpty ? 1 : currentIndex / exercises.length;
   bool get isFinished => currentIndex >= exercises.length;
+  int get correctCount => currentIndex;
 
   LessonState copyWith({int? currentIndex, int? combo, int? energy}) =>
       LessonState(

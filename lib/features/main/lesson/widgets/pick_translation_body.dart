@@ -21,17 +21,21 @@ class PickTranslationBody extends StatelessWidget {
   AnswerCardStatus _statusOf(String option) {
     if (checkedCorrect != null) {
       return option == selected
-          ? (checkedCorrect! ? AnswerCardStatus.correct : AnswerCardStatus.wrong)
+          ? (checkedCorrect!
+                ? AnswerCardStatus.correct
+                : AnswerCardStatus.wrong)
           : AnswerCardStatus.idle;
     }
-    return option == selected ? AnswerCardStatus.selected : AnswerCardStatus.idle;
+    return option == selected
+        ? AnswerCardStatus.selected
+        : AnswerCardStatus.idle;
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Spacer(),
+        const SizedBox(height: AppSpacing.S12),
         for (final option in exercise.options)
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 0, 16, 12),
@@ -39,10 +43,16 @@ class PickTranslationBody extends StatelessWidget {
               width: double.infinity,
               child: AppAnswerCard(
                 status: _statusOf(option),
+                fillWidth: true,
                 onPressed: () => onSelect(option),
-                child: Text(option,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600)),
+                child: Text(
+                  option,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ),
           ),

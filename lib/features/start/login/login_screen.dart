@@ -45,7 +45,6 @@ class _LoginScreenState extends State<LoginScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Đăng nhập...')),
     );
-    // TODO: gọi API đăng nhập thật. Hiện tại mock → nối thẳng sang Home.
     context.pushReplacement('/home');
   }
 

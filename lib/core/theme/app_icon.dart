@@ -44,6 +44,8 @@ class AppIcon {
   static const trophyGold = 'assets/icons/icon_trophy_gold_mainshell.svg';
   static const volumeOff = 'assets/icons/icon_volume_off.svg';
   static const volumeOn = 'assets/icons/icon_volume_on.svg';
+  static const volumeOnWhite = 'assets/icons/icon_volume_on_white.svg';
+
   static const logoTextGreen = 'assets/icons/logo_text_while.svg';
   static const logoTextWhite = 'assets/icons/logo_text_green.svg';
   static const imgSuper = 'assets/icons/img_super.svg';
@@ -172,6 +174,26 @@ class AppIcon {
   static const badgeMonth4 = 'assets/images/badge_month4.png';
 
   static const avatar = 'assets/images/avatar.png';
+
+  static const imageDuoWait = 'assets/images/image_duo_wait.png';
+  static const imageDuoResult = 'assets/images/image_duo_result.png';
+
+  static const charAunt = 'assets/images/char_aunt.png';
+  static const charBear = 'assets/images/char_bear.png';
+  static const charBrother = 'assets/images/char_brother.png';
+  static const charDuoHello = 'assets/images/char_duo_hello.png';
+  static const charDuoHi = 'assets/images/char_duo_hi.png';
+  static const charWriter = 'assets/images/char_writer.png';
+  static const charGrandMa = 'assets/images/char_grand_ma.png';
+  static const charNeighbor = 'assets/images/char_neighbor.png';
+  static const charOlderSister = 'assets/images/char_older_sister.png';
+  static const charUncle = 'assets/images/char_uncle.png';
+  static const charYoungerBrother = 'assets/images/char_younger_brother.png';
+
+  static const lessonCafe = 'assets/images/lesson_cafe.png';
+  static const lessonMilk = 'assets/images/lesson_milk.png';
+  static const lessonSuggar = 'assets/images/lesson_suggar.png';
+  static const lessonTea = 'assets/images/lesson_tea.png';
 
   static String medalForRank(int rank) => switch (rank) {
     1 => medal_gold,

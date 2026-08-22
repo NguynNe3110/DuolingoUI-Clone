@@ -20,6 +20,7 @@ class AppAnswerCard extends StatefulWidget {
   final Widget child;
   final AnswerCardStatus status;
   final bool fillWidth;
+
   /// Config theo dạng bài — KHÔNG phải state:
   /// match 2 cột = true (sai → shake), normal = false (sai → chỉ đỏ)
   final bool shakeOnWrong;
@@ -60,12 +61,48 @@ class _AppAnswerCardState extends State<AppAnswerCard>
   );
 
   late final Animation<double> _shakeX = TweenSequence<double>([
-    TweenSequenceItem(tween: Tween(begin: 0.0, end: -9.0).chain(CurveTween(curve: Curves.easeOut)), weight: 15),
-    TweenSequenceItem(tween: Tween(begin: -9.0, end: 8.0).chain(CurveTween(curve: Curves.easeInOut)), weight: 20),
-    TweenSequenceItem(tween: Tween(begin: 8.0, end: -6.0).chain(CurveTween(curve: Curves.easeInOut)), weight: 20),
-    TweenSequenceItem(tween: Tween(begin: -6.0, end: 4.0).chain(CurveTween(curve: Curves.easeInOut)), weight: 20),
-    TweenSequenceItem(tween: Tween(begin: 4.0, end: -2.0).chain(CurveTween(curve: Curves.easeInOut)), weight: 15),
-    TweenSequenceItem(tween: Tween(begin: -2.0, end: 0.0).chain(CurveTween(curve: Curves.easeIn)), weight: 10),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.0,
+        end: -9.0,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 15,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: -9.0,
+        end: 8.0,
+      ).chain(CurveTween(curve: Curves.easeInOut)),
+      weight: 20,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 8.0,
+        end: -6.0,
+      ).chain(CurveTween(curve: Curves.easeInOut)),
+      weight: 20,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: -6.0,
+        end: 4.0,
+      ).chain(CurveTween(curve: Curves.easeInOut)),
+      weight: 20,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 4.0,
+        end: -2.0,
+      ).chain(CurveTween(curve: Curves.easeInOut)),
+      weight: 15,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: -2.0,
+        end: 0.0,
+      ).chain(CurveTween(curve: Curves.easeIn)),
+      weight: 10,
+    ),
   ]).animate(_shakeController);
 
   // ── JELLY BOUNCE (chạy khi vào correct) ──
@@ -75,35 +112,155 @@ class _AppAnswerCardState extends State<AppAnswerCard>
   );
 
   late final Animation<double> _bounceY = TweenSequence<double>([
-    TweenSequenceItem(tween: Tween(begin: 0.0, end: 2.0).chain(CurveTween(curve: Curves.easeIn)), weight: 12),
-    TweenSequenceItem(tween: Tween(begin: 2.0, end: -19.0).chain(CurveTween(curve: Curves.easeOut)), weight: 30),
-    TweenSequenceItem(tween: Tween(begin: -19.0, end: 0.0).chain(CurveTween(curve: Curves.easeIn)), weight: 24),
-    TweenSequenceItem(tween: Tween(begin: 0.0, end: -4.0).chain(CurveTween(curve: Curves.easeOut)), weight: 17),
-    TweenSequenceItem(tween: Tween(begin: -4.0, end: 0.0).chain(CurveTween(curve: Curves.easeIn)), weight: 17),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.0,
+        end: 2.0,
+      ).chain(CurveTween(curve: Curves.easeIn)),
+      weight: 12,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 2.0,
+        end: -19.0,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 30,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: -19.0,
+        end: 0.0,
+      ).chain(CurveTween(curve: Curves.easeIn)),
+      weight: 24,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.0,
+        end: -4.0,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 17,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: -4.0,
+        end: 0.0,
+      ).chain(CurveTween(curve: Curves.easeIn)),
+      weight: 17,
+    ),
   ]).animate(_bounceController);
 
   late final Animation<double> _scaleX = TweenSequence<double>([
-    TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.10).chain(CurveTween(curve: Curves.easeOut)), weight: 12),
-    TweenSequenceItem(tween: Tween(begin: 1.10, end: 0.94).chain(CurveTween(curve: Curves.easeOut)), weight: 30),
-    TweenSequenceItem(tween: Tween(begin: 0.94, end: 1.08).chain(CurveTween(curve: Curves.easeOut)), weight: 24),
-    TweenSequenceItem(tween: Tween(begin: 1.08, end: 0.97).chain(CurveTween(curve: Curves.easeInOut)), weight: 17),
-    TweenSequenceItem(tween: Tween(begin: 0.97, end: 1.0).chain(CurveTween(curve: Curves.easeIn)), weight: 17),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.0,
+        end: 1.10,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 12,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.10,
+        end: 0.94,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 30,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.94,
+        end: 1.08,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 24,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.08,
+        end: 0.97,
+      ).chain(CurveTween(curve: Curves.easeInOut)),
+      weight: 17,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.97,
+        end: 1.0,
+      ).chain(CurveTween(curve: Curves.easeIn)),
+      weight: 17,
+    ),
   ]).animate(_bounceController);
 
   late final Animation<double> _shadowScaleX = TweenSequence<double>([
-    TweenSequenceItem(tween: Tween(begin: 1.0, end: 1.0).chain(CurveTween(curve: Curves.easeOut)), weight: 12),
-    TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.84).chain(CurveTween(curve: Curves.easeOut)), weight: 30),
-    TweenSequenceItem(tween: Tween(begin: 0.84, end: 1.08).chain(CurveTween(curve: Curves.easeOut)), weight: 24),
-    TweenSequenceItem(tween: Tween(begin: 1.08, end: 0.97).chain(CurveTween(curve: Curves.easeInOut)), weight: 17),
-    TweenSequenceItem(tween: Tween(begin: 0.97, end: 1.0).chain(CurveTween(curve: Curves.easeIn)), weight: 17),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.0,
+        end: 1.0,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 12,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.0,
+        end: 0.84,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 30,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.84,
+        end: 1.08,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 24,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.08,
+        end: 0.97,
+      ).chain(CurveTween(curve: Curves.easeInOut)),
+      weight: 17,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.97,
+        end: 1.0,
+      ).chain(CurveTween(curve: Curves.easeIn)),
+      weight: 17,
+    ),
   ]).animate(_bounceController);
 
   late final Animation<double> _scaleY = TweenSequence<double>([
-    TweenSequenceItem(tween: Tween(begin: 1.0, end: 0.86).chain(CurveTween(curve: Curves.easeOut)), weight: 12),
-    TweenSequenceItem(tween: Tween(begin: 0.86, end: 1.08).chain(CurveTween(curve: Curves.easeOut)), weight: 30),
-    TweenSequenceItem(tween: Tween(begin: 1.08, end: 0.92).chain(CurveTween(curve: Curves.easeOut)), weight: 24),
-    TweenSequenceItem(tween: Tween(begin: 0.92, end: 1.03).chain(CurveTween(curve: Curves.easeInOut)), weight: 17),
-    TweenSequenceItem(tween: Tween(begin: 1.03, end: 1.0).chain(CurveTween(curve: Curves.easeIn)), weight: 17),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.0,
+        end: 0.86,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 12,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.86,
+        end: 1.08,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 30,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.08,
+        end: 0.92,
+      ).chain(CurveTween(curve: Curves.easeOut)),
+      weight: 24,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 0.92,
+        end: 1.03,
+      ).chain(CurveTween(curve: Curves.easeInOut)),
+      weight: 17,
+    ),
+    TweenSequenceItem(
+      tween: Tween(
+        begin: 1.03,
+        end: 1.0,
+      ).chain(CurveTween(curve: Curves.easeIn)),
+      weight: 17,
+    ),
   ]).animate(_bounceController);
 
   bool get _isDisabled => widget.status == AnswerCardStatus.disabled;
@@ -169,7 +326,7 @@ class _AppAnswerCardState extends State<AppAnswerCard>
     AnswerCardStatus.wrong => AppColors.textRedOnSurface150,
     AnswerCardStatus.retry => AppColors.textYellowOnSurface200,
 
-  // TODO: thay bằng token text-disabled của bạn nếu có
+    // TODO: thay bằng token text-disabled của bạn nếu có
     AnswerCardStatus.disabled => AppColors.grayBorder200,
   };
 
@@ -180,7 +337,7 @@ class _AppAnswerCardState extends State<AppAnswerCard>
     AnswerCardStatus.wrong => AppColors.redBorder150,
     AnswerCardStatus.retry => AppColors.yellowBorder200,
 
-  // disabled = phẳng, không còn cạnh 3D (đúng như video)
+    // disabled = phẳng, không còn cạnh 3D (đúng như video)
     AnswerCardStatus.disabled => Colors.transparent,
   };
 
@@ -205,15 +362,18 @@ class _AppAnswerCardState extends State<AppAnswerCard>
         // (lift / 16.0).clamp(0.0, 0.5).toDouble(); // càng cao càng mờ
 
         return Stack(
+          fit: widget.fillWidth ? StackFit.passthrough : StackFit.loose,
           clipBehavior: Clip.none,
           children: [
             // ── Ground Shadow: chỉ hiện khi card nhảy lên ──
             Positioned(
-              left: 0, right: 0, top: 0, bottom: 0,
+              left: 0,
+              right: 0,
+              top: 0,
+              bottom: 0,
               child: Transform(
                 alignment: Alignment.bottomCenter,
-                transform: Matrix4.identity()
-                  ..scale(_shadowScaleX.value, 1, 1),
+                transform: Matrix4.identity()..scale(_shadowScaleX.value, 1, 1),
 
                 child: DecoratedBox(
                   decoration: BoxDecoration(
@@ -228,7 +388,11 @@ class _AppAnswerCardState extends State<AppAnswerCard>
             Transform(
               alignment: Alignment.bottomCenter,
               transform: Matrix4.identity()
-                ..translate(_shakeX.value, bounceOffset + (_pressed ? _depth : 0), 0)
+                ..translate(
+                  _shakeX.value,
+                  bounceOffset + (_pressed ? _depth : 0),
+                  0,
+                )
                 ..scale(_scaleX.value, _scaleY.value, 1),
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
@@ -242,7 +406,10 @@ class _AppAnswerCardState extends State<AppAnswerCard>
                   decoration: BoxDecoration(
                     color: _backgroundColor(),
                     borderRadius: BorderRadius.circular(AppRadius.r14),
-                    border: Border.all(color: _borderColor(), width: AppBorder.b2),
+                    border: Border.all(
+                      color: _borderColor(),
+                      width: AppBorder.b2,
+                    ),
                     boxShadow: [
                       BoxShadow(
                         color: _depthColor(),

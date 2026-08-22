@@ -12,6 +12,8 @@ class AppButton extends StatefulWidget {
   final IconData? icon;
   final Color? iconColor;
 
+  final double? widthIcon;
+
   // 1. Mở khóa các biến custom color
   final Color? backgroundColor;
   final Color? depthColor;
@@ -34,6 +36,7 @@ class AppButton extends StatefulWidget {
     this.iconPath,
     this.icon,
     this.iconColor,
+    this.widthIcon = 20,
     this.backgroundColor, // Custom nền
     this.depthColor,      // Custom độ sâu (shadow)
     this.textColor,       // Custom chữ
@@ -89,12 +92,12 @@ class _AppButtonState extends State<AppButton> {
   }
   @override
   Widget build(BuildContext context) {
-    // 2. Lấy bảng màu gốc từ Variant
+    // laasy màu gốc từ Variant
     final basePalette = ButtonPalette.resolve(widget.variant, widget.isEnabled);
     final canTap = widget.isEnabled && widget.onPressed != null;
     final textTheme = Theme.of(context).textTheme;
 
-    // 3. CƠ CHẾ OVERRIDE: Custom Color ?? Variant Color
+    //override
     final finalBgColor = widget.backgroundColor ?? basePalette.backgroundColor;
     final finalDepthColor = widget.depthColor ?? basePalette.depthColor;
     final finalTextColor = widget.textColor ?? basePalette.textColor;
@@ -136,15 +139,16 @@ class _AppButtonState extends State<AppButton> {
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(12),
           child: Row(
             mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (widget.iconPath != null) ...[
                 // Nếu có custom textColor thì tint luôn icon cho đồng bộ (optional)
                 SvgPicture.asset(
                   widget.iconPath!,
-                  width: 20,
+                  width: widget.widthIcon,
                   // height: 20,
                   // colorFilter: ColorFilter.mode(finalTextColor, BlendMode.srcIn),
                 ),
@@ -162,7 +166,7 @@ class _AppButtonState extends State<AppButton> {
                 Text(
                   widget.label!,
                   style: widget.textStyle ??
-                      textTheme.labelMedium?.copyWith(color: finalTextColor), // Dùng màu đã override
+                      textTheme.labelMedium?.copyWith(color: finalTextColor, letterSpacing: 0.1, fontWeight: FontWeight.w800), // Dùng màu đã override
                 ),
             ],
           ),

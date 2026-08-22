@@ -59,12 +59,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
     if(fakeToken != null) { // check dang nhap
       // Navigator.of(context).pushReplacementNamed('/home');
-      // Nối Splash → Login (hiện tại mock: luôn đi login)
-      context.pushReplacement('/login');
+      // Nối Splash → AfterSplash
+      context.pushReplacement('/after-splash');
     } else {
       // Navigator.of(context).pushReplacementNamed('/home');
-      // Nối Splash → Login (hiện tại mock: luôn đi login)
-      context.pushReplacement('/login');
+      // Nối Splash → AfterSplash
+      context.pushReplacement('/after-splash'); // thay thees man hinh
     }
   }
 
