@@ -4,21 +4,23 @@ import 'package:duolingo_ui_clone/features/main/practices/practices_screen.dart'
 import 'package:duolingo_ui_clone/features/main/profile/screens/profile_screen.dart';
 import 'package:duolingo_ui_clone/features/main/pronounce/pronounce_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:path/path.dart';
 
 import '../../features/main/leaderboard/screens/leaderboard_screen.dart';
+import '../../features/main/lesson/screens/lesson_screen.dart';
 import '../../features/main/newsfeed/screens/news_feed_screen.dart';
 import '../../features/mock_screen/MockScreen.dart';
 import '../../features/main/home/screens/home_screen.dart';
 import '../../features/main/main_shell.dart';
 import '../../features/mock_screen/ui_cheat_sheet_app.dart';
+import '../../features/mock_screen/ui_property_reference.dart';
 import '../../features/splash/splash_screen.dart';
+import '../../features/start/first/login_screen.dart';
 
 final GoRouter MockScreenRouter = GoRouter(
   debugLogDiagnostics: true, // in ra log path cua gorouter
   initialLocation: '/',
   routes: [
-    GoRoute(path: '/', builder: (context, state) => ProfileScreen()),
+    GoRoute(path: '/', builder: (context, state) => LessonScreen()),
   ],
 );
 
@@ -64,6 +66,7 @@ final GoRouter appRouter = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, state) => SplashScreen()), // phai doi thanh splash
+    GoRoute(path: '/login', name: 'login', builder: (context, state) => const LoginScreen()),
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
         return MainShell(navigationShell: navigationShell);
@@ -107,6 +110,16 @@ final GoRouter UiCheatRouter = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(path: '/', builder: (context, state) => UiCheatSheetApp()),
+  ],
+);
+
+/// Router cho "TỪ ĐIỂN THUỘC TÍNH FLUTTER" (file ui_property_reference.dart).
+/// Mở bằng cách đổi main.dart:  routerConfig: UiPropertyReferenceRouter,
+final GoRouter UiPropertyReferenceRouter = GoRouter(
+  debugLogDiagnostics: true,
+  initialLocation: '/',
+  routes: [
+    GoRoute(path: '/', builder: (context, state) => const UiPropertyReferenceApp()),
   ],
 );
 

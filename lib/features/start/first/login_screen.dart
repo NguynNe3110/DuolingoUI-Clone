@@ -6,6 +6,7 @@ import 'package:duolingo_ui_clone/core/widgets/app_text_button.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/widgets/app_group_input_field.dart';
 
@@ -44,6 +45,8 @@ class _LoginScreenState extends State<LoginScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Đăng nhập...')),
     );
+    // TODO: gọi API đăng nhập thật. Hiện tại mock → nối thẳng sang Home.
+    context.pushReplacement('/home');
   }
 
   @override
@@ -122,13 +125,13 @@ class _LoginScreenState extends State<LoginScreen> {
             _passwordController.text.isNotEmpty)
             AppButton(
               label: 'ĐĂNG NHẬP',
-              onPressed: () {},
+              onPressed: _handleLogin,
               variant: ButtonVariant.secondary,
             )
           else
             AppButton(
               label: 'ĐĂNG NHẬP',
-              onPressed: () {},
+              onPressed: _handleLogin,
               variant: ButtonVariant.ghost,
             ),
 
@@ -201,3 +204,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+

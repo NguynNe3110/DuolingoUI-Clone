@@ -3,7 +3,11 @@ import 'package:duolingo_ui_clone/core/widgets/app_header.dart';
 import 'package:duolingo_ui_clone/data/mock_data/mock_feed_item.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../data/mock_data/mock_friend_streak.dart';
 import '../../../../domain/entities/feed_entities.dart';
+import '../../../../domain/entities/friend_streak_entities.dart';
+import '../../profile/sections/friend_streak_section.dart';
+import '../../profile/sections/friend_suggestion_section.dart';
 import '../widgets/feed_item_widget.dart';
 
 class NewsFeedScreen extends StatefulWidget {
@@ -19,6 +23,7 @@ class NewsFeedScreen extends StatefulWidget {
 class NewsFeedScreenState extends State<NewsFeedScreen> {
   // mock du lieu
   final feedItems = MockFeedItem.feedItems;
+  final List<FriendStreakEntities> friends = MockFriendStreak.friends;
 
   final ScrollController _scrollController = ScrollController();
 
@@ -54,9 +59,15 @@ class NewsFeedScreenState extends State<NewsFeedScreen> {
             Expanded(
               child: ListView.builder(
                 controller: _scrollController,
-                itemCount: feedItems.length,
+                itemCount: feedItems.length + 1, // +1 cho FriendStreakSection
                 itemBuilder: (context, index) {
-                  return FeedItemWidget(item: feedItems[index]);
+                  if (index == 0) {
+                    return FriendStreakSection(
+                      friends: friends,
+                      onTap: (friend) {},
+                    );
+                  }
+                  return FeedItemWidget(item: feedItems[index - 1]);
                 },
               ),
             ),

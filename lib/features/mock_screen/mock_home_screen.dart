@@ -4,26 +4,25 @@ import 'package:flutter/material.dart';
 import '../../../../data/mappers/lesson_node_mapper.dart';
 import '../../../../domain/entities/lesson_entities.dart';
 import '../../../../domain/usecases/resolve_node_status_usecase.dart';
-import '../layout/path_door.dart';
-import '../layout/path_layout_engine.dart';
-import '../layout/section_scroll_tracker.dart';
-import '../sections/course_switcher_panel.dart';
-import '../sections/home_header.dart';
-import '../widgets/lesson_node_data.dart';
-import '../widgets/lesson_popup_manager.dart';
-import '../widgets/section_card_view_data.dart';
-import '../widgets/section_divider.dart';
-import '../widgets/split_pressable_card.dart';
-import '../widgets/unit_color_scope.dart';
+import '../main/home/layout/path_door.dart';
+import '../main/home/layout/path_layout_engine.dart';
+import '../main/home/layout/section_scroll_tracker.dart';
+import '../main/home/sections/course_switcher_panel.dart';
+import '../main/home/sections/home_header.dart';
+import '../main/home/widgets/lesson_node_data.dart';
+import '../main/home/widgets/lesson_popup_manager.dart';
+import '../main/home/widgets/section_card_view_data.dart';
+import '../main/home/widgets/section_divider.dart';
+import '../main/home/widgets/split_pressable_card.dart';
+import '../main/home/widgets/unit_color_scope.dart';
 
-
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen123 extends StatefulWidget {
+  const HomeScreen123({super.key});
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<HomeScreen123> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen123> {
   bool _isPanelOpen = false;
 
   void _togglePanel() => setState(() => _isPanelOpen = !_isPanelOpen);
@@ -257,87 +256,87 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color(0xFFF7F7F7),
-        body:
-        // Column(
-        //   children: [
-        //     HomeHeader(
-        //       onFlagTap: () => {},
-        //       onStreakTap: () => {},
-        //       onGemTap: () => {},
-        //       onEnergyTap: () => {},
-        //     ),
+      backgroundColor: const Color(0xFFF7F7F7),
+      body:
+      // Column(
+      //   children: [
+      //     HomeHeader(
+      //       onFlagTap: () => {},
+      //       onStreakTap: () => {},
+      //       onGemTap: () => {},
+      //       onEnergyTap: () => {},
+      //     ),
         SafeArea(
-            child: Column(
-              children: [
-                HomeHeader(
-                  onEnergyTap: () => {},
-                  onFlagTap: () => {_togglePanel()}, // hoặc k cần () => . chỉ cần  viết truc tiep _togglePanel là duoc
-                  onGemTap: () => {},
-                  onStreakTap: () => {},
-                ),
-                Expanded(
-                  child: Stack(
-                    children: [
-                      NotificationListener<ScrollNotification>(
-                        onNotification: (_) {
-                          _popupManager?.hide();
-                          return false;
+          child: Column(
+            children: [
+              HomeHeader(
+                onEnergyTap: () => {},
+                onFlagTap: () => {_togglePanel()}, // hoặc k cần () => . chỉ cần  viết truc tiep _togglePanel là duoc
+                onGemTap: () => {},
+                onStreakTap: () => {},
+              ),
+              Expanded(
+                child: Stack(
+                  children: [
+                    NotificationListener<ScrollNotification>(
+                      onNotification: (_) {
+                        _popupManager?.hide();
+                        return false;
+                      },
+                      child: SingleChildScrollView(
+                        controller: _scrollCtrl,
+                        padding: const EdgeInsets.only(top: 150, bottom: 40),
+                        child: Column(children: _buildSections()),
+                      ),
+                    ),
+
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      child: ValueListenableBuilder<int>(
+                        valueListenable: _tracker.activeIndex,
+                        builder: (_, index, __) {
+                          final data = _flatDoors[index.clamp(0, _flatDoors.length - 1)];
+                          // ✅ Giờ constructor SplitPressableCard có tham số `data` rồi
+                          return SplitPressableCard(data: data);
                         },
-                        child: SingleChildScrollView(
-                          controller: _scrollCtrl,
-                          padding: const EdgeInsets.only(top: 150, bottom: 40),
-                          child: Column(children: _buildSections()),
-                        ),
                       ),
+                    ),
 
-                      Positioned(
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        child: ValueListenableBuilder<int>(
-                          valueListenable: _tracker.activeIndex,
-                          builder: (_, index, __) {
-                            final data = _flatDoors[index.clamp(0, _flatDoors.length - 1)];
-                            // ✅ Giờ constructor SplitPressableCard có tham số `data` rồi
-                            return SplitPressableCard(data: data);
-                          },
+                    IgnorePointer(
+                      ignoring: !_isPanelOpen,
+                      child: AnimatedOpacity(
+                        opacity: _isPanelOpen ? 1 : 0,
+                        duration: const Duration(milliseconds: 250),
+                        child: GestureDetector(
+                          onTap: _togglePanel, // chạm ra ngoài để đóng
+                          child: Container(color: Colors.black54),
                         ),
                       ),
+                    ),
 
-                      IgnorePointer(
-                        ignoring: !_isPanelOpen,
-                        child: AnimatedOpacity(
-                          opacity: _isPanelOpen ? 1 : 0,
-                          duration: const Duration(milliseconds: 250),
-                          child: GestureDetector(
-                            onTap: _togglePanel, // chạm ra ngoài để đóng
-                            child: Container(color: Colors.black54),
-                          ),
-                        ),
+                    // ── Layer 3: top bar + panel trượt từ trên xuống ──────
+                    // Đặt CUỐI trong Stack → nằm trên cùng → flag luôn bấm được
+                    Positioned(
+                      top: 0, left: 0, right: 0,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [//_buildTopBar(),
+                          _buildTopSheet()],
                       ),
-
-                      // ── Layer 3: top bar + panel trượt từ trên xuống ──────
-                      // Đặt CUỐI trong Stack → nằm trên cùng → flag luôn bấm được
-                      Positioned(
-                        top: 0, left: 0, right: 0,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [//_buildTopBar(),
-                            _buildTopSheet()],
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            )
+              ),
+            ],
+          )
 
-          //   ],
-          // )
+      //   ],
+      // )
 
 
-        )
+      )
     );
   }
 

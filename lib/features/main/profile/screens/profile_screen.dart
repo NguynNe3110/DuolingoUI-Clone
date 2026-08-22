@@ -1,11 +1,14 @@
 import 'dart:async';
 import 'package:duolingo_ui_clone/core/exports/app_export_theme.dart';
+import 'package:duolingo_ui_clone/features/main/profile/sections/friend_suggestion_section.dart';
 import 'package:duolingo_ui_clone/features/main/profile/sections/profile_state_section.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../core/theme/app_icon.dart';
+import '../../../../data/mock_data/mock_friend_streak.dart';
+import '../../../../data/mock_data/mock_friend_suggest.dart';
 import '../../../../domain/entities/friend_streak_entities.dart';
 import '../bloc/profile_bloc.dart';
 import '../bloc/profile_event.dart';
@@ -57,31 +60,8 @@ class _ProfileScreenContentState extends State<_ProfileScreenContent> {
 
   late StreamSubscription<ProfileUiEffect> _effectSubscription;
 
-  final List<FriendStreakEntities> friends = [
-    const FriendStreakEntities(
-      id: 'user_v',
-      status: FriendStreakStatus.active,
-      displayName: 'V',
-      streakCount: 1,
-    ),
-    FriendStreakEntities(
-      id: 'friend_1',
-      status: FriendStreakStatus.pending, // Chờ chấp nhận
-      avatarImage: 'assets/avatar_friend.png',
-    ),
-    const FriendStreakEntities(
-      id: 'empty_1',
-      status: FriendStreakStatus.empty,
-    ),
-    const FriendStreakEntities(
-      id: 'empty_2',
-      status: FriendStreakStatus.empty,
-    ),
-    const FriendStreakEntities(
-      id: 'empty_3',
-      status: FriendStreakStatus.empty,
-    ),
-  ];
+  final List<FriendStreakEntities> friends = MockFriendStreak.friends;
+  final List<FriendSuggestion> _mocksFriendSuggestion = MockFriendSuggest.mocks;
 
   @override
   void initState() {
@@ -173,6 +153,10 @@ class _ProfileScreenContentState extends State<_ProfileScreenContent> {
                           FriendStreakSection(
                             friends: friends,
                             onTap: (friend) {},
+                          ),
+
+                          FriendSuggestionSection(
+                              friends: _mocksFriendSuggestion,
                           ),
 
                           MonthlyBadgesSection(

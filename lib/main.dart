@@ -53,6 +53,7 @@ class MyApp extends StatelessWidget {
       // routerConfig: MockComponentRouter, // viết vào file mockScreen thì ở đây
       routerConfig: MockScreenRouter, // chỉ danh cho xây dựng cả màn hình
       // routerConfig: UiCheatRouter, //
+      // routerConfig: UiPropertyReferenceRouter, // mở "Từ điển thuộc tính Flutter" (ui_property_reference.dart)
 
 
       // home: HomeScreen(),// cấu hình theo navigator 1.0 bản cũ,

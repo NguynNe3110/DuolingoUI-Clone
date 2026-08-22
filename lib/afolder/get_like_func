@@ -1,0 +1,32 @@
+thay vì bool Function() => , để nhận true false
+để khi dùng thì phải
+suffix: _showIcon()
+    ? SvgPicture.asset(AppIcon.closeCircle)
+    : null,
+
+
+vậy hãy viết kiểu getter
+bool get _showIcon {
+  return _focusNode.hasFocus &&
+      widget.controller.text.isNotEmpty;
+}
+
+khi dùng
+suffix: _showIcon   <--- k cần gọi func
+    ? SvgPicture.asset(AppIcon.closeCircle)
+    : null,
+
+Khi nào dùng getter?
+
+Khi hàm:
+
+Không có tham số.
+Chỉ dùng để "tính toán một thuộc tính".
+
+Ví dụ:
+
+bool get isValid => username.isNotEmpty && password.isNotEmpty;
+bool get showClearButton => _focusNode.hasFocus && controller.text.isNotEmpty;
+String get fullName => "$firstName $lastName";
+Đây là cách viết rất phổ biến trong Flutter vì code ngắn gọn và dễ đọc hơn so với tạo một hàm chỉ để trả về bool.
+

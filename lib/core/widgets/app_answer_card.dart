@@ -19,12 +19,13 @@ enum AnswerCardStatus {
 class AppAnswerCard extends StatefulWidget {
   final Widget child;
   final AnswerCardStatus status;
-
+  final bool fillWidth;
   /// Config theo dạng bài — KHÔNG phải state:
   /// match 2 cột = true (sai → shake), normal = false (sai → chỉ đỏ)
   final bool shakeOnWrong;
 
   final VoidCallback? onPressed;
+  final EdgeInsets padding;
 
   // ── Hợp đồng thời gian cho screen đặt timer reset ──
   static const Duration shakeDuration = Duration(milliseconds: 400);
@@ -37,6 +38,8 @@ class AppAnswerCard extends StatefulWidget {
     required this.status,
     this.shakeOnWrong = false,
     this.onPressed,
+    this.fillWidth = false,
+    this.padding = const EdgeInsets.all(AppSpacing.S16),
   });
 
   @override
@@ -235,7 +238,7 @@ class _AppAnswerCardState extends State<AppAnswerCard>
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 30),
                   curve: Curves.easeOut,
-                  alignment: Alignment.center,
+                  alignment: widget.fillWidth ? Alignment.center : null,
                   decoration: BoxDecoration(
                     color: _backgroundColor(),
                     borderRadius: BorderRadius.circular(AppRadius.r14),
@@ -253,7 +256,7 @@ class _AppAnswerCardState extends State<AppAnswerCard>
                     child: IconTheme(
                       data: IconThemeData(color: _textColor()),
                       child: Padding(
-                        padding: const EdgeInsets.all(AppSpacing.S16),
+                        padding: widget.padding,
                         child: widget.child,
                       ),
                     ),
